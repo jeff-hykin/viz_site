@@ -1,4 +1,8 @@
-let app = require("quik-server")
+const app = require("quik-server")
+const cors = require('cors')
+// adding cors support (see https://github.com/expressjs/cors)
+app.use(cors())
+app.quikAdd("quik-dom")
 
 app.settings = {
     // default settings (all are optional)

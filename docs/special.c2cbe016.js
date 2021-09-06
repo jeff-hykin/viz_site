@@ -117,7 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../../../node_modules/quik-client/index.js":[function(require,module,exports) {
+})({"../node_modules/quik-client/index.js":[function(require,module,exports) {
 // get the quik symbol
 let quikUniqueKey = Symbol.for("quik")
 // if the quik-window doesnt exist, then create it
@@ -125,7 +125,7 @@ window[quikUniqueKey] || (window[quikUniqueKey] = {})
 // return the window-quik object
 module.exports = window[quikUniqueKey]
 
-},{}],"../../../node_modules/regenerator-runtime/runtime.js":[function(require,module,exports) {
+},{}],"../node_modules/regenerator-runtime/runtime.js":[function(require,module,exports) {
 var define;
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
@@ -215,9 +215,9 @@ var runtime = (function (exports) {
   // This is a polyfill for %IteratorPrototype% for environments that
   // don't natively support it.
   var IteratorPrototype = {};
-  IteratorPrototype[iteratorSymbol] = function () {
+  define(IteratorPrototype, iteratorSymbol, function () {
     return this;
-  };
+  });
 
   var getProto = Object.getPrototypeOf;
   var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
@@ -231,8 +231,9 @@ var runtime = (function (exports) {
 
   var Gp = GeneratorFunctionPrototype.prototype =
     Generator.prototype = Object.create(IteratorPrototype);
-  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
-  GeneratorFunctionPrototype.constructor = GeneratorFunction;
+  GeneratorFunction.prototype = GeneratorFunctionPrototype;
+  define(Gp, "constructor", GeneratorFunctionPrototype);
+  define(GeneratorFunctionPrototype, "constructor", GeneratorFunction);
   GeneratorFunction.displayName = define(
     GeneratorFunctionPrototype,
     toStringTagSymbol,
@@ -346,9 +347,9 @@ var runtime = (function (exports) {
   }
 
   defineIteratorMethods(AsyncIterator.prototype);
-  AsyncIterator.prototype[asyncIteratorSymbol] = function () {
+  define(AsyncIterator.prototype, asyncIteratorSymbol, function () {
     return this;
-  };
+  });
   exports.AsyncIterator = AsyncIterator;
 
   // Note that simple async functions are implemented on top of
@@ -541,13 +542,13 @@ var runtime = (function (exports) {
   // iterator prototype chain incorrectly implement this, causing the Generator
   // object to not be returned from this call. This ensures that doesn't happen.
   // See https://github.com/facebook/regenerator/issues/274 for more details.
-  Gp[iteratorSymbol] = function() {
+  define(Gp, iteratorSymbol, function() {
     return this;
-  };
+  });
 
-  Gp.toString = function() {
+  define(Gp, "toString", function() {
     return "[object Generator]";
-  };
+  });
 
   function pushTryEntry(locs) {
     var entry = { tryLoc: locs[0] };
@@ -866,21 +867,194 @@ try {
 } catch (accidentalStrictMode) {
   // This module should not be running in strict mode, so the above
   // assignment should always work unless something is misconfigured. Just
-  // in case runtime.js accidentally runs in strict mode, we can escape
+  // in case runtime.js accidentally runs in strict mode, in modern engines
+  // we can explicitly access globalThis. In older engines we can escape
   // strict mode using a global Function call. This could conceivably fail
   // if a Content Security Policy forbids using Function, but in that case
   // the proper solution is to fix the accidental strict mode problem. If
   // you've misconfigured your bundler to force strict mode and applied a
   // CSP to forbid Function, and you're not willing to fix either of those
   // problems, please detail your unique predicament in a GitHub issue.
-  Function("r", "regeneratorRuntime = r")(runtime);
+  if (typeof globalThis === "object") {
+    globalThis.regeneratorRuntime = runtime;
+  } else {
+    Function("r", "regeneratorRuntime = r")(runtime);
+  }
 }
 
-},{}],"special.js":[function(require,module,exports) {
+},{}],"../node_modules/good-dom/index.js":[function(require,module,exports) {
+// expand the HTML element ability
+Object.defineProperties(window.HTMLElement.prototype, {
+    // setting styles through a string
+    css : { set: Object.getOwnPropertyDescriptor(window.HTMLElement.prototype, 'style').set },
+    // allow setting of styles through string or object
+    style: {
+        set: function (styles) {
+            if (typeof styles == "string") {
+                this.css = styles
+            } else {
+                Object.assign(this.style, styles)
+            }
+        }
+    },
+    // allow setting of children directly
+    children: {
+        set: function(newChilden) {
+            // remove all children
+            while (this.firstChild) {
+                this.removeChild(this.firstChild)
+            }
+            // add new child nodes
+            for (let each of newChilden) {
+                this.add(each)
+            }
+        },
+        get: function() {
+            return this.childNodes
+        }
+    },
+    class: {
+        set : function(newClass) {
+            this.className = newClass
+        },
+        get : function() {
+            return this.className
+        }
+    }
+})
+// add()
+window.HTMLElement.prototype.add = function (...inputs) {
+    for (let each of inputs) {
+        if (typeof each == 'string') {
+            this.appendChild(new window.Text(each))
+        } else if (each instanceof Function) {
+            this.add(each())
+        } else if (each instanceof Array) {
+            this.add(...each)
+        } else {
+            this.appendChild(each)
+        }
+    }
+    return this
+}
+// the special "add" case of the select method
+window.HTMLSelectElement.prototype.add = window.HTMLElement.prototype.add
+// addClass()
+window.HTMLElement.prototype.addClass = function (...inputs) {
+    return this.classList.add(...inputs)
+}
+// for (let eachChild of elemCollection)
+window.HTMLCollection.prototype[Symbol.iterator] = function* () {
+    let index = 0
+    let len = this.length
+    while (index < len) {
+        yield this[index++]
+    }
+}
+// for (let eachChild of elem)
+window.HTMLElement.prototype[Symbol.iterator] = function* () {
+    let index = 0
+    let len = this.childNodes.length
+    while (index < len) {
+        yield this.childNodes[index++]
+    }
+}
+// create a setter/getter for <head>
+let originalHead = document.head
+// add a setter to document.head
+Object.defineProperty(document,"head", { 
+    set: (element) => {
+        document.head.add(...element.childNodes)
+    },
+    get: ()=>originalHead
+})
+
+// add all the dom elements
+let domElements = {}
+tagNames = ["a", "abbr", "acronym", "address", "applet", "area", "article", "aside", "audio", "b", "base", "basefont", "bdi", "bdo", "big", "blockquote", "body", "br", "button", "canvas", "caption", "center", "cite", "code", "col", "colgroup", "data", "datalist", "dd", "del", "details", "dfn", "dialog", "dir", "div", "dl", "dt", "em", "embed", "fieldset", "figcaption", "figure", "font", "footer", "form", "frame", "frameset", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hr", "html", "i", "iframe", "img", "input", "ins", "kbd", "label", "legend", "li", "link", "main", "map", "mark", "meta", "meter", "nav", "noframes", "noscript", "object", "ol", "optgroup", "option", "output", "p", "param", "picture", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "script", "section", "select", "small", "source", "span", "strike", "strong", "style", "sub", "summary", "sup", "svg", "table", "tbody", "td", "template", "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "tt", "u", "ul", "var", "video", "wbr"]
+for (let each of tagNames) {
+    eval(`domElements.${each.toUpperCase()} = function(properties,...children) { 
+        if (properties instanceof window.Node || typeof properties == 'string') 
+            return document.createElement("${each}").add(properties, ...children)
+        return Object.assign(document.createElement("${each}"), properties).add(...children)}
+        `)
+}
+
+function makeGlobal() {
+    Object.assign(window, domElements)
+}
+
+// if there is no exporting system
+if(typeof exports == "undefined"){
+    // put everything in the window scope
+    makeGlobal()
+// if there is an export system
+} else {
+    // give the user the choice of local or window
+    module.exports = domElements
+    module.exports.global = makeGlobal
+}
+
+},{}],"../node_modules/good-jsx/index.js":[function(require,module,exports) {
+require("good-dom").global()
+
+// create a JSX middleware system if it doesnt exist
+if (!window.jsxChain) {
+    window.jsxChain = []
+}
+
+let isConstructor = (obj) => {
+  return !!obj.prototype && !!obj.prototype.constructor.name;
+}
+
+// add it to JSX
+window.React = {
+    createElement: (key, properties, ...children) => {
+        // run middleware
+        for (let eachMiddleWare of window.jsxChain) {
+            let element = eachMiddleWare(key, properties, ...children)
+            if (element) {
+                return element
+            }
+        }
+        if (key instanceof Function) {
+            if (isConstructor(key)) {
+                return new key({...properties, children})
+            } else {
+                return key({...properties, children: children})
+            }
+        }
+        return Object.assign(document.createElement(key), properties).add(...children)
+    },
+}
+},{"good-dom":"../node_modules/good-dom/index.js"}],"special.js":[function(require,module,exports) {
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 var quik = require('quik-client');
 
 require('regenerator-runtime/runtime');
-},{"quik-client":"../../../node_modules/quik-client/index.js","regenerator-runtime/runtime":"../../../node_modules/regenerator-runtime/runtime.js"}],"../../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+;
+
+_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+  return regeneratorRuntime.wrap(function _callee$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          require("good-jsx");
+
+        case 1:
+        case "end":
+          return _context.stop();
+      }
+    }
+  }, _callee);
+}))();
+
+;
+},{"quik-client":"../node_modules/quik-client/index.js","regenerator-runtime/runtime":"../node_modules/regenerator-runtime/runtime.js","good-jsx":"../node_modules/good-jsx/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -908,7 +1082,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59563" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61157" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -1084,5 +1258,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","special.js"], null)
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","special.js"], null)
 //# sourceMappingURL=/special.c2cbe016.js.map
