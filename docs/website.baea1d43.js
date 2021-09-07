@@ -1903,29 +1903,25 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 var anime = require("animejs").default; // const Letterize = require("letterizejs").default
 
 
-var numberOfStars = 60;
-var vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-var vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-var sky, regularStarContainer, shootingStarContainer, regularStars, shootingStars;
+var numberOfStars = 60; // 
+// 
+// regular stars
+// 
+// 
+// TODO: check to make sure it works okay with rectangle-shaped containers
 
-var randomRadius = function randomRadius() {
-  return (Math.random() * 0.7 + 0.6) / 7;
-}; // export a container with stars
-
-
-module.exports = sky = /*#__PURE__*/React.createElement("div", null, // TODO: check to make sure it works okay with rectangle-shaped containers
-regularStarContainer = /*#__PURE__*/React.createElement("svg", {
+var regularStarContainer = /*#__PURE__*/React.createElement("svg", {
   height: "100%",
   width: "100%",
   viewBox: "0 0 100 100",
   preserveAspectRatio: "none",
   xmlns: "http://www.w3.org/2000/svg",
   "xmlns:xlink": "http://www.w3.org/1999/xlink"
-}, regularStars = _toConsumableArray(Array(numberOfStars)).map(function (x, y) {
+}, _toConsumableArray(Array(numberOfStars)).map(function (x, y) {
   return /*#__PURE__*/React.createElement("circle", {
     cx: Math.random() * 100,
     cy: Math.random() * 100,
-    r: randomRadius(),
+    randomRadiusSize: Math.random(),
     stroke: "none",
     strokeWidth: "0",
     fill: "white",
@@ -1933,49 +1929,12 @@ regularStarContainer = /*#__PURE__*/React.createElement("svg", {
     class: "star",
     style: "opacity: 1;"
   });
-})), shootingStarContainer = /*#__PURE__*/React.createElement("div", null, shootingStars = _toConsumableArray(Array(numberOfStars)).map(function (x, y) {
-  return /*#__PURE__*/React.createElement("div", {
-    key: y,
-    class: "wish",
-    randomYPosition: Math.random(),
-    randomXPosition: Math.random()
-  });
-})), /*#__PURE__*/React.createElement("style", null, "\n        .wish {\n            height: 2px;\n            top: 300px;\n            width: 100px;\n            margin: 0;\n            opacity: 0;\n            padding: 0;\n            background-color: white;\n            position: absolute;\n            background: linear-gradient(-45deg, white, rgba(0, 0, 255, 0));\n            filter: drop-shadow(0 0 6px white);\n            overflow: hidden;\n        }\n    ")); // occasionally update the location of the stars (because the shape of the container may change)
-
-setInterval(function () {
-  if (shootingStarContainer.clientWidth) {
-    var _iterator = _createForOfIteratorHelper(shootingStars),
-        _step;
-
-    try {
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
-        var each = _step.value;
-        each.style.left = each.randomXPosition * shootingStarContainer.clientWidth;
-        each.style.top = each.randomYPosition * shootingStarContainer.clientHeight;
-      }
-    } catch (err) {
-      _iterator.e(err);
-    } finally {
-      _iterator.f();
-    }
-  }
-}, 250); // background: linear-gradient(to right, #ff47a1 0%, #ff9f4d 100%);
-// background: rgb(2,0,36);
-// background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 56%, rgba(8,23,130,1) 58%, rgba(0,212,255,1) 100%);
-
-sky.style = "\n    background: rgb(0,61,126);\n    background: radial-gradient(circle at 100%, rgba(0,61,126,1) 0%, rgba(2,0,36,1) 100%);\n    width: 50rem;\n    height: 50rem;\n    min-width: 50rem;\n    min-height: 50rem;\n    position: relative;\n";
-shootingStarContainer.style = "\n    margin: 0px;\n    padding: 0px;\n    width: 200%;\n    height: 200%;\n    position: absolute;\n    overflow: hidden;\n    transform: scale(-1, 1) rotate(60deg) translateY(-0%) translateX(-50%);\n    top: 0;\n    left: 0;\n    transform-box: fill-box;\n    transform-origin: top left;\n"; // width: 100%;
-// height: 100%;
-// position: absolute;
-// overflow: hidden;
-// regularStarContainer.style = `
-//     margin: 0;
-//     padding: 0;
-// `
+})); // 
 // animate the regular stars
+// 
 
 anime({
-  targets: regularStars,
+  targets: regularStarContainer.children,
   opacity: [{
     duration: 700,
     value: "0"
@@ -1988,10 +1947,79 @@ anime({
   delay: function delay(el, i) {
     return 50 * i;
   }
-}); // animate the shooting stars
+}); // 
+// update radius when element size changes
+// 
+
+var computeRadius = function computeRadius(randomRadiusSize) {
+  var clientWidth = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1000;
+  return (randomRadiusSize * 0.7 + 0.6) / (clientWidth / 100);
+};
+
+var previousRegularStarContainerWidth = null;
+setInterval(function () {
+  // if the width of the parent changed pixel value
+  if (regularStarContainer.clientWidth && regularStarContainer.clientWidth != previousRegularStarContainerWidth) {
+    previousRegularStarContainerWidth = regularStarContainer.clientWidth; // update the radius
+
+    var _iterator = _createForOfIteratorHelper(regularStarContainer.children),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var each = _step.value;
+        each.setAttribute("r", computeRadius(each.randomRadiusSize, regularStarContainer.clientWidth));
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+  }
+}, 250); // 
+// 
+// shooting stars
+// 
+// 
+
+var shootingStarContainer = /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("style", null, "\n            .wish {\n                height: 2px;\n                top: 300px;\n                width: 100px;\n                margin: 0;\n                opacity: 0;\n                padding: 0;\n                background-color: white;\n                position: absolute;\n                background: linear-gradient(-45deg, white, rgba(0, 0, 255, 0));\n                filter: drop-shadow(0 0 6px white);\n                overflow: hidden;\n            }\n        "), _toConsumableArray(Array(numberOfStars)).map(function (x, y) {
+  return /*#__PURE__*/React.createElement("div", {
+    key: y,
+    class: "wish",
+    randomYPosition: Math.random(),
+    randomXPosition: Math.random()
+  });
+}));
+shootingStarContainer.style = "\n    margin: 0px;\n    padding: 0px;\n    width: 200%;\n    height: 200%;\n    position: absolute;\n    overflow: hidden;\n    transform: scale(-1, 1) rotate(60deg) translateY(-0%) translateX(-50%);\n    top: 0;\n    left: 0;\n    transform-box: fill-box;\n    transform-origin: top left;\n"; // 
+// update location when width of container changes
+// 
+
+var previousShootingStarContainerWidth = null;
+setInterval(function () {
+  if (shootingStarContainer.clientWidth && shootingStarContainer.clientWidth != previousShootingStarContainerWidth) {
+    previousShootingStarContainerWidth = shootingStarContainer.clientWidth;
+
+    var _iterator2 = _createForOfIteratorHelper(shootingStarContainer.children),
+        _step2;
+
+    try {
+      for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+        var each = _step2.value;
+        each.style.left = each.randomXPosition * shootingStarContainer.clientWidth;
+        each.style.top = each.randomYPosition * shootingStarContainer.clientHeight;
+      }
+    } catch (err) {
+      _iterator2.e(err);
+    } finally {
+      _iterator2.f();
+    }
+  }
+}, 250); // 
+// animate the shooting stars
+// 
 
 anime({
-  targets: shootingStars,
+  targets: shootingStarContainer.children,
   easing: "linear",
   loop: true,
   delay: function delay(el, i) {
@@ -2007,7 +2035,14 @@ anime({
     value: "0px"
   }],
   translateX: 350
-});
+}); // 
+// 
+// sky
+// 
+// 
+
+var sky = module.exports = /*#__PURE__*/React.createElement("div", null, regularStarContainer, shootingStarContainer);
+sky.style = "\n    background: rgb(0,61,126);\n    background: radial-gradient(circle at 100%, rgba(0,61,126,1) 0%, rgba(2,0,36,1) 100%);\n    width: 50rem;\n    height: 50rem;\n    min-width: 50rem;\n    min-height: 50rem;\n    position: relative;\n";
 },{"animejs":"../node_modules/animejs/lib/anime.es.js"}],"../website.jsx":[function(require,module,exports) {
 var starContainer = require("./main/stars");
 

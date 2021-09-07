@@ -10,13 +10,10 @@ const numberOfStars = 60
 // regular stars
 // 
 // 
-const randomRadius = () => {
-    return (Math.random() * 0.7 + 0.6)/7
-}
 // TODO: check to make sure it works okay with rectangle-shaped containers
 let regularStarContainer = <svg height="100%" width="100%" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     {[...Array(numberOfStars)].map(
-        (x, y) => <circle cx={Math.random()*100} cy={Math.random()*100} r={randomRadius()} stroke="none" strokeWidth="0" fill="white" key={y} class="star" style={`opacity: 1;`} />
+        (x, y) => <circle cx={Math.random()*100} cy={Math.random()*100} randomRadiusSize={Math.random()} stroke="none" strokeWidth="0" fill="white" key={y} class="star" style={`opacity: 1;`} />
     )}
 </svg>
 // 
@@ -38,7 +35,23 @@ anime({
     loop: true,
     delay: (el, i) => 50 * i,
 })
-
+// 
+// update radius when element size changes
+// 
+const computeRadius = (randomRadiusSize, clientWidth=1000) => {
+    return (randomRadiusSize * 0.7 + 0.6)/(clientWidth/100)
+}
+let previousRegularStarContainerWidth = null
+setInterval(() => {
+    // if the width of the parent changed pixel value
+    if (regularStarContainer.clientWidth && (regularStarContainer.clientWidth != previousRegularStarContainerWidth)) {
+        previousRegularStarContainerWidth = regularStarContainer.clientWidth
+        // update the radius
+        for (const each of regularStarContainer.children) {
+            each.setAttribute("r", computeRadius(each.randomRadiusSize, regularStarContainer.clientWidth))
+        }
+    }
+}, 250)
 
 
 
@@ -90,16 +103,19 @@ shootingStarContainer.style = `
     transform-origin: top left;
 `
 // 
-// occasionally update the location of the stars (because the shape of the container may change)
+// update location when width of container changes
 // 
+let previousShootingStarContainerWidth = null
 setInterval(() => {
-    if (shootingStarContainer.clientWidth) {
+    if (shootingStarContainer.clientWidth && (shootingStarContainer.clientWidth != previousShootingStarContainerWidth)) {
+        previousShootingStarContainerWidth = shootingStarContainer.clientWidth
         for (const each of shootingStarContainer.children) {
             each.style.left = each.randomXPosition * shootingStarContainer.clientWidth
             each.style.top = each.randomYPosition * shootingStarContainer.clientHeight
         }
     }
 }, 250)
+
 // 
 // animate the shooting stars
 // 
