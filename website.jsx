@@ -1,5 +1,7 @@
+let starContainer = require("./main/stars")
 document.body = <body>
     Hello World!
+    {starContainer}
 </body>
 
 document.body.style = `

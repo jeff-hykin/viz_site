@@ -886,7 +886,7 @@ try {
 // expand the HTML element ability
 Object.defineProperties(window.HTMLElement.prototype, {
     // setting styles through a string
-    css : { set: Object.getOwnPropertyDescriptor(window.HTMLElement.prototype, 'style').set },
+    css: { set: Object.getOwnPropertyDescriptor(window.HTMLElement.prototype, 'style').set },
     // allow setting of styles through string or object
     style: {
         set: function (styles) {
@@ -914,16 +914,16 @@ Object.defineProperties(window.HTMLElement.prototype, {
         }
     },
     class: {
-        set : function(newClass) {
+        set: function(newClass) {
             this.className = newClass
         },
-        get : function() {
+        get: function() {
             return this.className
         }
     }
 })
 // add()
-window.HTMLElement.prototype.add = function (...inputs) {
+window.HTMLElement.prototype.add = window.SVGElement.prototype.add = window.HTMLSelectElement.prototype.add = function (...inputs) {
     for (let each of inputs) {
         if (typeof each == 'string') {
             this.appendChild(new window.Text(each))
@@ -937,12 +937,12 @@ window.HTMLElement.prototype.add = function (...inputs) {
     }
     return this
 }
-// the special "add" case of the select method
-window.HTMLSelectElement.prototype.add = window.HTMLElement.prototype.add
+
 // addClass()
 window.HTMLElement.prototype.addClass = function (...inputs) {
     return this.classList.add(...inputs)
 }
+
 // for (let eachChild of elemCollection)
 window.HTMLCollection.prototype[Symbol.iterator] = function* () {
     let index = 0
@@ -960,7 +960,7 @@ window.HTMLElement.prototype[Symbol.iterator] = function* () {
     }
 }
 // create a setter/getter for <head>
-let originalHead = document.head
+const originalHead = document.head
 // add a setter to document.head
 Object.defineProperty(document,"head", { 
     set: (element) => {
@@ -969,19 +969,60 @@ Object.defineProperty(document,"head", {
     get: ()=>originalHead
 })
 
+// 
 // add all the dom elements
-let domElements = {}
-tagNames = ["a", "abbr", "acronym", "address", "applet", "area", "article", "aside", "audio", "b", "base", "basefont", "bdi", "bdo", "big", "blockquote", "body", "br", "button", "canvas", "caption", "center", "cite", "code", "col", "colgroup", "data", "datalist", "dd", "del", "details", "dfn", "dialog", "dir", "div", "dl", "dt", "em", "embed", "fieldset", "figcaption", "figure", "font", "footer", "form", "frame", "frameset", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hr", "html", "i", "iframe", "img", "input", "ins", "kbd", "label", "legend", "li", "link", "main", "map", "mark", "meta", "meter", "nav", "noframes", "noscript", "object", "ol", "optgroup", "option", "output", "p", "param", "picture", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "script", "section", "select", "small", "source", "span", "strike", "strong", "style", "sub", "summary", "sup", "svg", "table", "tbody", "td", "template", "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "tt", "u", "ul", "var", "video", "wbr"]
-for (let each of tagNames) {
-    eval(`domElements.${each.toUpperCase()} = function(properties,...children) { 
-        if (properties instanceof window.Node || typeof properties == 'string') 
-            return document.createElement("${each}").add(properties, ...children)
-        return Object.assign(document.createElement("${each}"), properties).add(...children)}
-        `)
+// 
+const elements = {}
+const tagNames = ["a", "abbr", "acronym", "address", "applet", "area", "article", "aside", "audio", "b", "base", "basefont", "bdi", "bdo", "big", "blockquote", "body", "br", "button", "canvas", "caption", "center", "cite", "code", "col", "colgroup", "data", "datalist", "dd", "del", "details", "dfn", "dialog", "dir", "div", "dl", "dt", "em", "embed", "fieldset", "figcaption", "figure", "font", "footer", "form", "frame", "frameset", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hr", "html", "i", "iframe", "img", "input", "ins", "kbd", "label", "legend", "li", "link", "main", "map", "mark", "meta", "meter", "nav", "noframes", "noscript", "object", "ol", "optgroup", "option", "output", "p", "param", "picture", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "script", "section", "select", "small", "source", "span", "strike", "strong", "style", "sub", "summary", "sup", "svg", "table", "tbody", "td", "template", "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "tt", "u", "ul", "var", "video", "wbr"]
+for (const each of tagNames) {
+    elements[each.toUpperCase()] = function(properties, ...children) {
+        // if only given children
+        if (properties instanceof window.Node || typeof properties == 'string') {
+            children.unshift(properties)
+            properties = null
+        }
+        // create either an html element or an svg element
+        const element = document.createElement(each)
+        if (properties instanceof Object) {
+            for (const [key, value] of Object.entries(properties)) {
+                try {
+                    element.setAttribute(key, value)
+                } catch (error) {
+                    element[key] = value
+                }
+            }
+        }
+        return element.add(...children)
+    }
+}
+// 
+// add all the (exclusively) svg elements (because <a> tags are both SVG and Dom *facepalm*)
+// 
+const exclusivelySvgElements = ["animate", "animateMotion", "animateTransform", "circle", "clipPath", "defs", "desc", "discard", "ellipse", "feBlend", "feColorMatrix", "feComponentTransfer", "feComposite", "feConvolveMatrix", "feDiffuseLighting", "feDisplacementMap", "feDistantLight", "feDropShadow", "feFlood", "feFuncA", "feFuncB", "feFuncG", "feFuncR", "feGaussianBlur", "feImage", "feMerge", "feMergeNode", "feMorphology", "feOffset", "fePointLight", "feSpecularLighting", "feSpotLight", "feTile", "feTurbulence", "filter", "foreignObject", "g", "hatch", "hatchpath", "image", "line", "linearGradient", "marker", "mask", "mesh", "meshgradient", "meshpatch", "meshrow", "metadata", "mpath", "path", "pattern", "polygon", "polyline", "radialGradient", "rect", "set", "stop", "switch", "symbol", "text", "textPath", "tspan", "unknown", "use", "view",]
+for (const each of tagNames) {
+    elements[each.toUpperCase()] = function(properties, ...children) {
+        // if only given children
+        if (properties instanceof window.Node || typeof properties == 'string') {
+            children.unshift(properties)
+            properties = null
+        }
+        // create either an html element or an svg element
+        const element = document.createElementNS('http://www.w3.org/2000/svg', each)
+        if (properties instanceof Object) {
+            for (const [key, value] of Object.entries(properties)) {
+                try {
+                    element.setAttribute(key, value)
+                } catch (error) {
+                    element[key] = value
+                }
+            }
+        }
+        return element.add(...children)
+    }
 }
 
 function makeGlobal() {
-    Object.assign(window, domElements)
+    Object.assign(window, elements)
 }
 
 // if there is no exporting system
@@ -991,20 +1032,21 @@ if(typeof exports == "undefined"){
 // if there is an export system
 } else {
     // give the user the choice of local or window
-    module.exports = domElements
+    module.exports = elements
     module.exports.global = makeGlobal
 }
 
 },{}],"../node_modules/good-jsx/index.js":[function(require,module,exports) {
 require("good-dom").global()
 
+const exclusivelySvgElements = new Set(["animate", "animateMotion", "animateTransform", "circle", "clipPath", "defs", "desc", "discard", "ellipse", "feBlend", "feColorMatrix", "feComponentTransfer", "feComposite", "feConvolveMatrix", "feDiffuseLighting", "feDisplacementMap", "feDistantLight", "feDropShadow", "feFlood", "feFuncA", "feFuncB", "feFuncG", "feFuncR", "feGaussianBlur", "feImage", "feMerge", "feMergeNode", "feMorphology", "feOffset", "fePointLight", "feSpecularLighting", "feSpotLight", "feTile", "feTurbulence", "filter", "foreignObject", "g", "hatch", "hatchpath", "image", "line", "linearGradient", "marker", "mask", "mesh", "meshgradient", "meshpatch", "meshrow", "metadata", "mpath", "path", "pattern", "polygon", "polyline", "radialGradient", "rect", "set", "stop", "switch", "symbol", "text", "textPath", "tspan", "unknown", "use", "view",])
 // create a JSX middleware system if it doesnt exist
 if (!window.jsxChain) {
     window.jsxChain = []
 }
 
 let isConstructor = (obj) => {
-  return !!obj.prototype && !!obj.prototype.constructor.name;
+    return !!obj.prototype && !!obj.prototype.constructor.name;
 }
 
 // add it to JSX
@@ -1012,7 +1054,7 @@ window.React = {
     createElement: (key, properties, ...children) => {
         // run middleware
         for (let eachMiddleWare of window.jsxChain) {
-            let element = eachMiddleWare(key, properties, ...children)
+            const element = eachMiddleWare(key, properties, ...children)
             if (element) {
                 return element
             }
@@ -1024,7 +1066,18 @@ window.React = {
                 return key({...properties, children: children})
             }
         }
-        return Object.assign(document.createElement(key), properties).add(...children)
+        // create either an html element or an svg element
+        const element = exclusivelySvgElements.has(key) ? document.createElementNS('http://www.w3.org/2000/svg', key) : document.createElement(key)
+        if (properties instanceof Object) {
+            for (const [key, value] of Object.entries(properties)) {
+                try {
+                    element.setAttribute(key, value)
+                } catch (error) {
+                    element[key] = value
+                }
+            }
+        }
+        return element.add(...children)
     },
 }
 },{"good-dom":"../node_modules/good-dom/index.js"}],"special.js":[function(require,module,exports) {
@@ -1082,7 +1135,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61157" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52472" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
