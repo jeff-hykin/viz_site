@@ -6,24 +6,20 @@ const numberOfStars = 60
 let vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
 let vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
 
+var sky, regularStarContainer, shootingStarContainer, regularStars, shootingStars
+
 const randomRadius = () => {
-        return Math.random() * 0.7 + 0.6
-}
-const getRandomX = () => {
-    return Math.floor(Math.random() * Math.floor(vw)).toString()
-}
-const getRandomY = () => {
-    return Math.floor(Math.random() * Math.floor(vh)).toString()
+    return (Math.random() * 0.7 + 0.6)/7
 }
 
 
 // export a container with stars
-var sky, regularStarContainer, shootingStarContainer, regularStars, shootingStars
 module.exports = sky = <div>
     {
-        regularStarContainer = <svg>{
-            regularStars = window.regularStars = [...Array(numberOfStars)].map(
-                (x, y) => <circle cx={getRandomX()} cy={getRandomY()} r={randomRadius()} stroke="none" strokeWidth="0" fill="white" key={y} class="star" />
+        // TODO: check to make sure it works okay with rectangle-shaped containers
+        regularStarContainer = <svg height="100%" width="100%" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">{
+            regularStars = [...Array(numberOfStars)].map(
+                (x, y) => <circle cx={Math.random()*100} cy={Math.random()*100} r={randomRadius()} stroke="none" strokeWidth="0" fill="white" key={y} class="star" style={`opacity: 1;`} />
             )
         }</svg>
     }
@@ -34,10 +30,8 @@ module.exports = sky = <div>
                     <div
                         key={y}
                         class="wish"
-                        style={`
-                            left: ${getRandomY()}px;
-                            top: ${getRandomX()}px;
-                        `}
+                        randomYPosition={Math.random()}
+                        randomXPosition={Math.random()}
                     />
             )
         }</div>
@@ -59,12 +53,24 @@ module.exports = sky = <div>
     `}</style>
 </div>
 
+// occasionally update the location of the stars (because the shape of the container may change)
+setInterval(() => {
+    if (shootingStarContainer.clientWidth) {
+        for (const each of shootingStars) {
+            each.style.left = each.randomXPosition * shootingStarContainer.clientWidth
+            each.style.top = each.randomYPosition * shootingStarContainer.clientHeight
+        }
+    }
+}, 250)
+
     // background: linear-gradient(to right, #ff47a1 0%, #ff9f4d 100%);
     // background: rgb(2,0,36);
     // background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 56%, rgba(8,23,130,1) 58%, rgba(0,212,255,1) 100%);
 sky.style = `
     background: rgb(0,61,126);
     background: radial-gradient(circle at 100%, rgba(0,61,126,1) 0%, rgba(2,0,36,1) 100%);
+    width: 50rem;
+    height: 50rem;
     min-width: 50rem;
     min-height: 50rem;
     position: relative;
@@ -77,19 +83,21 @@ shootingStarContainer.style = `
     height: 200%;
     position: absolute;
     overflow: hidden;
-    transform: translateX(25%) translateY(50%) rotate(120deg);
+    transform: scale(-1, 1) rotate(60deg) translateY(-0%) translateX(-50%);
+    top: 0;
+    left: 0;
     transform-box: fill-box;
-    transform-origin: top;
+    transform-origin: top left;
 `
 
-regularStarContainer.style = `
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-`
+    // width: 100%;
+    // height: 100%;
+    // position: absolute;
+    // overflow: hidden;
+// regularStarContainer.style = `
+//     margin: 0;
+//     padding: 0;
+// `
 
 // animate the regular stars
 anime({

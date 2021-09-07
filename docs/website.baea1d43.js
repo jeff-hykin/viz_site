@@ -1885,6 +1885,8 @@ anime.random = function (min, max) {
 var _default = anime;
 exports.default = _default;
 },{}],"../main/stars.jsx":[function(require,module,exports) {
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -1904,45 +1906,73 @@ var anime = require("animejs").default; // const Letterize = require("letterizej
 var numberOfStars = 60;
 var vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 var vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+var sky, regularStarContainer, shootingStarContainer, regularStars, shootingStars;
 
 var randomRadius = function randomRadius() {
-  return Math.random() * 0.7 + 0.6;
-};
-
-var getRandomX = function getRandomX() {
-  return Math.floor(Math.random() * Math.floor(vw)).toString();
-};
-
-var getRandomY = function getRandomY() {
-  return Math.floor(Math.random() * Math.floor(vh)).toString();
+  return (Math.random() * 0.7 + 0.6) / 7;
 }; // export a container with stars
 
 
-var sky, regularStarContainer, shootingStarContainer, regularStars, shootingStars;
-module.exports = sky = /*#__PURE__*/React.createElement("div", null, regularStarContainer = /*#__PURE__*/React.createElement("svg", null, regularStars = window.regularStars = _toConsumableArray(Array(numberOfStars)).map(function (x, y) {
+module.exports = sky = /*#__PURE__*/React.createElement("div", null, // TODO: check to make sure it works okay with rectangle-shaped containers
+regularStarContainer = /*#__PURE__*/React.createElement("svg", {
+  height: "100%",
+  width: "100%",
+  viewBox: "0 0 100 100",
+  preserveAspectRatio: "none",
+  xmlns: "http://www.w3.org/2000/svg",
+  "xmlns:xlink": "http://www.w3.org/1999/xlink"
+}, regularStars = _toConsumableArray(Array(numberOfStars)).map(function (x, y) {
   return /*#__PURE__*/React.createElement("circle", {
-    cx: getRandomX(),
-    cy: getRandomY(),
+    cx: Math.random() * 100,
+    cy: Math.random() * 100,
     r: randomRadius(),
     stroke: "none",
     strokeWidth: "0",
     fill: "white",
     key: y,
-    class: "star"
+    class: "star",
+    style: "opacity: 1;"
   });
 })), shootingStarContainer = /*#__PURE__*/React.createElement("div", null, shootingStars = _toConsumableArray(Array(numberOfStars)).map(function (x, y) {
   return /*#__PURE__*/React.createElement("div", {
     key: y,
     class: "wish",
-    style: "\n                            left: ".concat(getRandomY(), "px;\n                            top: ").concat(getRandomX(), "px;\n                        ")
+    randomYPosition: Math.random(),
+    randomXPosition: Math.random()
   });
-})), /*#__PURE__*/React.createElement("style", null, "\n        .wish {\n            height: 2px;\n            top: 300px;\n            width: 100px;\n            margin: 0;\n            opacity: 0;\n            padding: 0;\n            background-color: white;\n            position: absolute;\n            background: linear-gradient(-45deg, white, rgba(0, 0, 255, 0));\n            filter: drop-shadow(0 0 6px white);\n            overflow: hidden;\n        }\n    ")); // background: linear-gradient(to right, #ff47a1 0%, #ff9f4d 100%);
+})), /*#__PURE__*/React.createElement("style", null, "\n        .wish {\n            height: 2px;\n            top: 300px;\n            width: 100px;\n            margin: 0;\n            opacity: 0;\n            padding: 0;\n            background-color: white;\n            position: absolute;\n            background: linear-gradient(-45deg, white, rgba(0, 0, 255, 0));\n            filter: drop-shadow(0 0 6px white);\n            overflow: hidden;\n        }\n    ")); // occasionally update the location of the stars (because the shape of the container may change)
+
+setInterval(function () {
+  if (shootingStarContainer.clientWidth) {
+    var _iterator = _createForOfIteratorHelper(shootingStars),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var each = _step.value;
+        each.style.left = each.randomXPosition * shootingStarContainer.clientWidth;
+        each.style.top = each.randomYPosition * shootingStarContainer.clientHeight;
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+  }
+}, 250); // background: linear-gradient(to right, #ff47a1 0%, #ff9f4d 100%);
 // background: rgb(2,0,36);
 // background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 56%, rgba(8,23,130,1) 58%, rgba(0,212,255,1) 100%);
 
-sky.style = "\n    background: rgb(0,61,126);\n    background: radial-gradient(circle at 100%, rgba(0,61,126,1) 0%, rgba(2,0,36,1) 100%);\n    min-width: 50rem;\n    min-height: 50rem;\n    position: relative;\n";
-shootingStarContainer.style = "\n    margin: 0px;\n    padding: 0px;\n    width: 200%;\n    height: 200%;\n    position: absolute;\n    overflow: hidden;\n    transform: translateX(25%) translateY(50%) rotate(120deg);\n    transform-box: fill-box;\n    transform-origin: top;\n";
-regularStarContainer.style = "\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    overflow: hidden;\n    margin: 0;\n    padding: 0;\n"; // animate the regular stars
+sky.style = "\n    background: rgb(0,61,126);\n    background: radial-gradient(circle at 100%, rgba(0,61,126,1) 0%, rgba(2,0,36,1) 100%);\n    width: 50rem;\n    height: 50rem;\n    min-width: 50rem;\n    min-height: 50rem;\n    position: relative;\n";
+shootingStarContainer.style = "\n    margin: 0px;\n    padding: 0px;\n    width: 200%;\n    height: 200%;\n    position: absolute;\n    overflow: hidden;\n    transform: scale(-1, 1) rotate(60deg) translateY(-0%) translateX(-50%);\n    top: 0;\n    left: 0;\n    transform-box: fill-box;\n    transform-origin: top left;\n"; // width: 100%;
+// height: 100%;
+// position: absolute;
+// overflow: hidden;
+// regularStarContainer.style = `
+//     margin: 0;
+//     padding: 0;
+// `
+// animate the regular stars
 
 anime({
   targets: regularStars,
@@ -2011,7 +2041,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52472" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59533" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
