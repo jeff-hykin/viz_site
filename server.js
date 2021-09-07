@@ -1,5 +1,6 @@
 const app = require("quik-server")
 const cors = require('cors')
+const utils = require("./utils")
 // adding cors support (see https://github.com/expressjs/cors)
 app.use(cors())
 app.quikAdd("quik-dom")
@@ -22,9 +23,9 @@ app.settings = {
     // afterSystemFrontendSetup: () => {
     //     // anything you want to do
     // },
-    // afterSystemBundlerSetup: () => {
-    //     // anything you want to do
-    // },
+    afterSystemBundlerSetup: async () => {
+        await utils.bundleIntoSingleFile({existingHtmlFile: "./docs/index.html"})
+    },
     // afterServerStarted: () => {
     //     // anything you want to do
     // },
