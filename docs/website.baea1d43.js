@@ -1903,7 +1903,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 var anime = require("animejs").default; // const Letterize = require("letterizejs").default
 
 
-var numberOfStars = 60; // 
+var numberOfStars = 60;
+var starScalingFactor = 115; // its based off the width of the parent container 
+// 
 // 
 // regular stars
 // 
@@ -1914,7 +1916,7 @@ var regularStarContainer = /*#__PURE__*/React.createElement("svg", {
   height: "100%",
   width: "100%",
   viewBox: "0 0 100 100",
-  preserveAspectRatio: "none",
+  preserveAspectRatio: "xMidYMin slice",
   xmlns: "http://www.w3.org/2000/svg",
   "xmlns:xlink": "http://www.w3.org/1999/xlink"
 }, _toConsumableArray(Array(numberOfStars)).map(function (x, y) {
@@ -1953,7 +1955,7 @@ anime({
 
 var computeRadius = function computeRadius(randomRadiusSize) {
   var clientWidth = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1000;
-  return (randomRadiusSize * 0.7 + 0.6) / (clientWidth / 100);
+  return (randomRadiusSize * 0.7 + 0.6) / (clientWidth / starScalingFactor);
 };
 
 var previousRegularStarContainerWidth = null;
@@ -2042,11 +2044,15 @@ anime({
 // 
 
 var sky = module.exports = /*#__PURE__*/React.createElement("div", null, regularStarContainer, shootingStarContainer);
-sky.style = "\n    background: rgb(0,61,126);\n    background: radial-gradient(circle at 100%, rgba(0,61,126,1) 0%, rgba(2,0,36,1) 100%);\n    width: 50rem;\n    height: 50rem;\n    min-width: 50rem;\n    min-height: 50rem;\n    position: relative;\n";
+sky.style = "\n    background: rgb(0,61,126);\n    background: radial-gradient(circle at 100%, rgba(0,61,126,1) 0%, rgba(2,0,36,1) 100%);\n    width: 100%;\n    height: 100%;\n    position: relative;\n";
 },{"animejs":"../node_modules/animejs/lib/anime.es.js"}],"../website.jsx":[function(require,module,exports) {
 var starContainer = require("./main/stars");
 
-document.body = /*#__PURE__*/React.createElement("body", null, "Hello World!", starContainer);
+document.body = /*#__PURE__*/React.createElement("body", null, /*#__PURE__*/React.createElement("div", {
+  style: "width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; z-index: -1;"
+}, starContainer), /*#__PURE__*/React.createElement("span", {
+  style: "color: whitesmoke; margin-top: 5rem;"
+}, "Hello World!"));
 document.body.style = "\n    display: flex; \n    align-items: center; \n    justify-content: center;\n    font-size: 30pt; \n    font-family: sans-serif;\n";
 },{"./main/stars":"../main/stars.jsx"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];

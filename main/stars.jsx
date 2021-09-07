@@ -3,6 +3,7 @@ const anime = require("animejs").default
 // const Letterize = require("letterizejs").default
 
 const numberOfStars = 60
+const starScalingFactor = 115 // its based off the width of the parent container 
 
 
 // 
@@ -11,7 +12,7 @@ const numberOfStars = 60
 // 
 // 
 // TODO: check to make sure it works okay with rectangle-shaped containers
-let regularStarContainer = <svg height="100%" width="100%" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+let regularStarContainer = <svg height="100%" width="100%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMin slice" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     {[...Array(numberOfStars)].map(
         (x, y) => <circle cx={Math.random()*100} cy={Math.random()*100} randomRadiusSize={Math.random()} stroke="none" strokeWidth="0" fill="white" key={y} class="star" style={`opacity: 1;`} />
     )}
@@ -39,7 +40,7 @@ anime({
 // update radius when element size changes
 // 
 const computeRadius = (randomRadiusSize, clientWidth=1000) => {
-    return (randomRadiusSize * 0.7 + 0.6)/(clientWidth/100)
+    return (randomRadiusSize * 0.7 + 0.6)/(clientWidth/starScalingFactor)
 }
 let previousRegularStarContainerWidth = null
 setInterval(() => {
@@ -156,9 +157,7 @@ let sky = module.exports = <div>
 sky.style = `
     background: rgb(0,61,126);
     background: radial-gradient(circle at 100%, rgba(0,61,126,1) 0%, rgba(2,0,36,1) 100%);
-    width: 50rem;
-    height: 50rem;
-    min-width: 50rem;
-    min-height: 50rem;
+    width: 100%;
+    height: 100%;
     position: relative;
 `
