@@ -1,0 +1,36 @@
+{
+  "name": "viz_site",
+  "version": "1.0.0",
+  "description": "Everything is detailed in the `documentation/setup.md`!",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeff-hykin/viz_site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeff-hykin/viz_site/issues"
+  },
+  "homepage": "https://github.com/jeff-hykin/viz_site#readme",
+  "dependencies": {
+    "anime": "^0.1.2",
+    "animejs": "^3.2.1",
+    "cors": "^2.8.5",
+    "good-jsx": "^1.3.1",
+    "letterizejs": "^2.0.1",
+    "quik-dom": "^1.0.6",
+    "quik-server": "^2.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.5"
+  }
+}
