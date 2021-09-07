@@ -2045,16 +2045,184 @@ anime({
 
 var sky = module.exports = /*#__PURE__*/React.createElement("div", null, regularStarContainer, shootingStarContainer);
 sky.style = "\n    background: rgb(0,61,126);\n    background: radial-gradient(circle at 100%, rgba(0,61,126,1) 0%, rgba(2,0,36,1) 100%);\n    width: 100%;\n    height: 100%;\n    position: relative;\n";
+},{"animejs":"../node_modules/animejs/lib/anime.es.js"}],"../main/campfire.jsx":[function(require,module,exports) {
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var anime = require("animejs").default; // const Letterize = require("letterizejs").default
+
+
+var fireNodes1, fireNodes2, fireNodes3, baseFire;
+var campfireContainer = module.exports = /*#__PURE__*/React.createElement("div", {
+  class: "cf-container"
+}, /*#__PURE__*/React.createElement("style", null, "\n                .cf-container .cf-flame-container {\n                    width: 100px;\n                    height: 100px;\n                    bottom: 0px;\n                    position: absolute;\n                }\n                .cf-container .cf-log-container {\n                    width: 60%;\n                    height: 100px;\n                    position: absolute;\n                    bottom: 0px;\n                    left: 50px;\n                }\n                .cf-container .cf-flame-container#base-fire .cf-flame:nth-child(1) {\n                    background: #c63509;\n                    opacity: 0.95;\n                }\n                .cf-container .cf-flame-container#base-fire .cf-flame:nth-child(2) {\n                    background: #cd4015;\n                    width: 100px;\n                    height: 100px;\n                    opacity: 0.85;\n                    left: 75px;\n                }\n                .cf-container .cf-flame-container#base-fire .cf-flame:nth-child(3) {\n                    background: #d73e0f;\n                    width: 60px;\n                    height: 60px;\n                    opacity: 0.85;\n                    left: 130px;\n                }\n                .cf-container .cf-flame-container:nth-child(2) {\n                    width: 150px;\n                    height: 150px;\n                    bottom: 0px;\n                    position: absolute;\n                    transform: rotate(180deg) translate(-60%,-55%);\n                }\n                .cf-container .cf-flame-container:nth-child(2) .cf-flame {\n                    width: 75px;\n                    height: 75px;\n                    left: 75px;\n                }\n                .cf-log {\n                    background: #723830;\n                    width: 20px;\n                    height: 30px;\n                    transform-origin: center;\n                    position: absolute;\n                    bottom: 0px;\n                    border-radius: 0.5rem;\n                    box-shadow: 0 3px 10px #372113;\n                    width: 100%;\n                }\n                .cf-log:nth-child(1) {\n                    transform: rotate(15deg);\n                }\n                .cf-log:nth-child(2) {\n                    transform: rotate(-15deg);\n                }\n                .cf-flame:nth-child(1) {\n                    background: #f5ed8f;\n                }\n                .cf-flame:nth-child(2) {\n                    background: #fde239;\n                }\n                .cf-flame:nth-child(3) {\n                    background: #ffdc01;\n                }\n                .cf-flame:nth-child(4) {\n                    background: #fdac01;\n                }\n                .cf-flame:nth-child(5) {\n                    background: #d73e0f;\n                }\n                .cf-flame:nth-child(6) {\n                    background: #cd4015;\n                }\n                .cf-flame:nth-child(7) {\n                    background: #c63509;\n                }\n                .cf-flame:last-child {\n                    background: #c63509;\n                }\n                .cf-flame {\n                    background: #cd4015;\n                    width: 100px;\n                    height: 100px;\n                    border-radius: 1rem;\n                    position: absolute;\n                    bottom: 0px;\n                    left: 100px;\n                }\n                #fireNodes2 .cf-flame {\n                    animation: flameColor 1.5s ease-out infinite;\n                }\n                @keyframes flameColor {\n                    0% {\n                        background: #c63509;\n                    }\n                    20% {\n                        background: #cd4015;\n                    }\n                    30% {\n                        background: #fdac01;\n                    }\n                    50% {\n                        background: #ffb401;\n                    }\n                    60% {\n                        background: #fdac01;\n                    }\n                    70% {\n                        background: #ffdc01;\n                    }\n                    80% {\n                        background: #fde239;\n                    }\n                    100% {\n                        background: #f5ed8f;\n                    }\n                }\n            "), fireNodes1 = /*#__PURE__*/React.createElement("div", {
+  class: "cf-flame-container",
+  id: "fireNodes1"
+}, /*#__PURE__*/React.createElement("div", {
+  class: "cf-flame"
+}), /*#__PURE__*/React.createElement("div", {
+  class: "cf-flame"
+}), /*#__PURE__*/React.createElement("div", {
+  class: "cf-flame"
+}), /*#__PURE__*/React.createElement("div", {
+  class: "cf-flame"
+}), /*#__PURE__*/React.createElement("div", {
+  class: "cf-flame"
+}), /*#__PURE__*/React.createElement("div", {
+  class: "cf-flame"
+}), /*#__PURE__*/React.createElement("div", {
+  class: "cf-flame"
+})), fireNodes2 = /*#__PURE__*/React.createElement("div", {
+  class: "cf-flame-container",
+  id: "fireNodes2"
+}, /*#__PURE__*/React.createElement("div", {
+  class: "cf-flame"
+}), /*#__PURE__*/React.createElement("div", {
+  class: "cf-flame"
+}), /*#__PURE__*/React.createElement("div", {
+  class: "cf-flame"
+}), /*#__PURE__*/React.createElement("div", {
+  class: "cf-flame"
+}), /*#__PURE__*/React.createElement("div", {
+  class: "cf-flame"
+}), /*#__PURE__*/React.createElement("div", {
+  class: "cf-flame"
+}), /*#__PURE__*/React.createElement("div", {
+  class: "cf-flame"
+})), baseFire = /*#__PURE__*/React.createElement("div", {
+  class: "cf-flame-container",
+  id: "base-fire"
+}, /*#__PURE__*/React.createElement("div", {
+  class: "cf-flame"
+}), /*#__PURE__*/React.createElement("div", {
+  class: "cf-flame"
+}), /*#__PURE__*/React.createElement("div", {
+  class: "cf-flame"
+})), /*#__PURE__*/React.createElement("div", {
+  class: "cf-log-container"
+}, /*#__PURE__*/React.createElement("div", {
+  class: "cf-log"
+}), /*#__PURE__*/React.createElement("div", {
+  class: "cf-log"
+})));
+campfireContainer.style = "\n    box-sizing: content-box;\n    width: 300px;\n    height: 300px;\n    position:relative;\n    transform: translate(0,-10%);\n";
+fireNodes1 = fireNodes1.children;
+fireNodes2 = fireNodes2.children;
+fireNodes3 = fireNodes1.children;
+baseFire = baseFire.children;
+
+function animateBaseFire() {
+  anime({
+    targets: baseFire,
+    delay: anime.stagger(300),
+    translateY: function translateY() {
+      return anime.random(0, -10);
+    },
+    keyframes: [{
+      scale: 0.8
+    }, {
+      scale: 0.825
+    }, {
+      scale: 0.9
+    }, {
+      scale: 0.925
+    }, {
+      scale: 1
+    }],
+    duration: 300,
+    easing: "easeInOutSine",
+    loop: true
+  });
+}
+
+function animateFlame1() {
+  anime({
+    targets: fireNodes1,
+    delay: anime.stagger(100),
+    translateY: function translateY() {
+      return anime.random(0, 300);
+    },
+    rotate: 30,
+    opacity: function opacity() {
+      return anime.random(0.5, 1);
+    },
+    translateX: function translateX() {
+      return anime.random(0, -60);
+    },
+    scale: 0,
+    skew: function skew() {
+      return anime.random(0, 10);
+    },
+    loop: true,
+    easing: "easeInOutSine"
+  });
+}
+
+function animateFlame2() {
+  var _anime;
+
+  anime((_anime = {
+    targets: fireNodes2,
+    delay: anime.stagger(400),
+    translateX: function translateX() {
+      return anime.random(-30, 0);
+    },
+    translateY: function translateY() {
+      return anime.random(0, -260);
+    }
+  }, _defineProperty(_anime, "translateY", function translateY() {
+    return anime.random(-260, -160);
+  }), _defineProperty(_anime, "translateX", function translateX() {
+    return anime.random(0, -30);
+  }), _defineProperty(_anime, "scale", 0), _defineProperty(_anime, "rotate", function rotate() {
+    return anime.random(0, 60);
+  }), _defineProperty(_anime, "skew", function skew() {
+    return anime.random(0, 30);
+  }), _defineProperty(_anime, "loop", true), _defineProperty(_anime, "easing", "easeInOutSine"), _anime));
+}
+
+function animateFlame3() {
+  anime({
+    targets: fireNodes3,
+    delay: anime.stagger(500),
+    translateY: function translateY() {
+      return anime.random(-300, -200);
+    },
+    opacity: function opacity() {
+      return anime.random(0, 1);
+    },
+    translateX: function translateX() {
+      return anime.random(-50, 50);
+    },
+    scale: 0,
+    rotate: function rotate() {
+      return anime.random(0, -30);
+    },
+    skew: function skew() {
+      return anime.random(0, 20);
+    },
+    loop: true,
+    easing: "easeInOutSine"
+  });
+}
+
+animateFlame1();
+animateFlame2();
+animateFlame3();
+animateBaseFire();
 },{"animejs":"../node_modules/animejs/lib/anime.es.js"}],"../website.jsx":[function(require,module,exports) {
 var starContainer = require("./main/stars");
+
+var campFire = require("./main/campfire");
 
 document.body = /*#__PURE__*/React.createElement("body", null, /*#__PURE__*/React.createElement("div", {
   style: "width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; z-index: -1;"
 }, starContainer), /*#__PURE__*/React.createElement("span", {
   style: "color: whitesmoke; margin-top: 5rem;"
-}, "Hello World!"));
-document.body.style = "\n    display: flex; \n    align-items: center; \n    justify-content: center;\n    font-size: 30pt; \n    font-family: sans-serif;\n";
-},{"./main/stars":"../main/stars.jsx"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+}, "Hello World!"), /*#__PURE__*/React.createElement("div", {
+  style: "position: fixed; bottom: 0; left: 0; width: 100vw; display: flex; flex-direction: column; align-items: center; justify-content: flex-end;"
+}, campFire));
+document.body.style = "\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100vw;\n    min-height: 100vh;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: flex-start;\n    font-size: 30pt; \n    font-family: sans-serif;\n";
+},{"./main/stars":"../main/stars.jsx","./main/campfire":"../main/campfire.jsx"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -2082,7 +2250,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59533" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59036" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
