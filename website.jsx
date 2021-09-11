@@ -32,7 +32,7 @@ document.body = <body>
             #profile {
                 position: fixed;
                 left: 5rem;
-                top: 8rem;
+                top: 6rem;
                 width: 500px;
                 overflow: hidden;
             }
@@ -55,7 +55,7 @@ document.body = <body>
                 <h3>Jeff Hykin</h3>
                 <Spacer></Spacer>
                 <span>
-                    I've been interested in visualization as long as I've been a programmer. I'm always looking for better ways to improve my illustrations, and this class seemed like a great opportunity to systemically approach the topic.
+                    I've been interested in visualization as long as I've been a programmer. I'm always looking ways to improve my illustrations, and this class seemed like a great opportunity to systemically approach the topic. I'm particularly interested in high dimension datasets and I love graph-theory visualizations.
                 </span>
             </div>
         </Card>
@@ -65,7 +65,7 @@ document.body = <body>
             
          */}
         <div style={{position: "fixed", left: "680px", top: "0", ...columnObj, alignItems: "flex-start", justifyContent: "flex-start", overflow: "scroll", maxHeight: "100vh", scrollbarWidth: "none"}}>
-            <Spacer size="6.5rem"></Spacer>
+            <Spacer size="4.5rem"></Spacer>
             
             <ContentCard>
                 <h3>Great Visualizations</h3>
@@ -91,7 +91,9 @@ document.body = <body>
                 <div style={{width:"100%", borderTop: "2px gray solid"}}></div>
                 <Spacer/>
                 <span>
-                    Similarly, while there are many I find horrifying, there is one that immediately comes to mind. Allow me to introduce my bank, Wells Fargo. Sometimes the worst visualization is simply no visualization.
+                    Similarly, while there are many I find horrifying, there is one that immediately comes to mind. Allow me to introduce my bank, Wells Fargo.
+                    <Spacer/>
+                    Sometimes the worst visualization is simply no visualization:
                     <Spacer/>
                     <img style="object-fit: cover; width: 100%; max-width: 70rem;" src="https://user-images.githubusercontent.com/17692058/132937010-11dd9cb7-0b7a-4041-9dde-c4efa464da53.png" alt="" srcset="" />
                     {/* <div style={{...rowObj}}>
@@ -100,9 +102,9 @@ document.body = <body>
                     <Spacer/>
                     Whats income? Whats an expense? Are their any trends? Any clusters? We can't tell.
                     <Spacer />
-                    Not only is there no average, no future projections, no indication of up/downward trends, but there is not so much as a 1% change in hue between a 1¢ charge and a $6,000 charge. There isn't even a color distiction between cashflow out or cashflow in. <br/>
+                    Not only is there no average, no future projections, no indication of up/downward trends, but there is not so much as a 1% change in hue between a 1¢ charge and a $6,000 charge. There isn't even a color distinction between cashflow out and cashflow in. <br/>
                     <Spacer />
-                    This format conveys the absolute rock-bottom minimum amount of insight. No format could be less helpful without quite literally obfuscating the data itself.
+                    This format conveys the absolute rock-bottom minimum amount of insight. No format could provide less understanding without quite literally obfuscating the data itself.
                 </span>
             </ContentCard>
             
