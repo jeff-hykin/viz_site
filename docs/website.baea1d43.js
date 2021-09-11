@@ -117,7 +117,79 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../node_modules/animejs/lib/anime.es.js":[function(require,module,exports) {
+})({"../node_modules/.pnpm/parcel-bundler@1.12.5/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../node_modules/.pnpm/parcel-bundler@1.12.5/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"../node_modules/.pnpm/parcel-bundler@1.12.5/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../main/globals.sass":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/.pnpm/parcel-bundler@1.12.5/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/animejs/lib/anime.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2209,7 +2281,64 @@ animateFlame1();
 animateFlame2();
 animateFlame3();
 animateBaseFire();
-},{"animejs":"../node_modules/animejs/lib/anime.es.js"}],"../main/howdy.jsx":[function(require,module,exports) {
+},{"animejs":"../node_modules/animejs/lib/anime.es.js"}],"../main/styles.js":[function(require,module,exports) {
+module.exports = {
+  columnObj: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  column: "\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        justify-content: center;\n    ",
+  shadow: "\n        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);\n    ",
+  shadow3: "\n        box-shadow: 0 8px 17px 2px rgba(0,0,0,0.14),0 3px 14px 2px rgba(0,0,0,0.12),0 5px 5px -3px rgba(0,0,0,0.2);\n    "
+};
+},{}],"../main/card.jsx":[function(require,module,exports) {
+var _excluded = ["children", "width"];
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+var _require = require("./styles"),
+    column = _require.column,
+    shadow = _require.shadow;
+
+module.exports = function (_ref) {
+  var children = _ref.children,
+      width = _ref.width,
+      properties = _objectWithoutProperties(_ref, _excluded);
+
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: "\n        ".concat(!width ? "" : "width: ".concat(width, ";"), "\n        background: white;\n        background-color: #fff;\n        -webkit-transition: -webkit-box-shadow .25s;\n        transition: -webkit-box-shadow .25s;\n        transition: box-shadow .25s;\n        transition: box-shadow .25s, -webkit-box-shadow .25s;\n        border-radius: 2px;\n        ").concat(shadow, "\n        ").concat(column, "\n    ")
+  }, properties), children);
+};
+},{"./styles":"../main/styles.js"}],"../main/spacer.jsx":[function(require,module,exports) {
+var _excluded = ["size", "children"];
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+var _require = require("./styles"),
+    column = _require.column,
+    shadow = _require.shadow;
+
+module.exports = function (_ref) {
+  var _ref$size = _ref.size,
+      size = _ref$size === void 0 ? "1rem" : _ref$size,
+      children = _ref.children,
+      properties = _objectWithoutProperties(_ref, _excluded);
+
+  return /*#__PURE__*/React.createElement("div", _extends({
+    style: "\n        min-width: ".concat(size, ";\n        ").concat(column, "\n        min-height: ").concat(size, ";\n    ")
+  }, properties), children);
+};
+},{"./styles":"../main/styles.js"}],"../main/howdy.jsx":[function(require,module,exports) {
 var anime = require("animejs").default; // const Letterize = require("letterizejs").default
 
 
@@ -2221,39 +2350,104 @@ var howdy = module.exports = /*#__PURE__*/React.createElement("svg", {
   height: "72"
 }, /*#__PURE__*/React.createElement("path", {
   style: "transform: translate(50%,82%);",
+  "stroke-width": "3",
   stroke: color,
   fill: "none",
   d: "M-103.61-3.66L-103.61-54.07L-97.84-54.07L-97.84-32.63L-82.16-32.63L-82.16-54.07L-76.39-54.07L-76.39-3.66L-82.16-3.66L-82.16-27.14L-97.84-27.14L-97.84-3.66L-103.61-3.66ZM-53.93-39.23L-53.93-39.23Q-47.32-39.23-43.56-33.40L-43.56-33.40Q-40.32-28.55-40.32-20.74L-40.32-20.74Q-40.32-14.87-42.26-10.44L-42.26-10.44Q-45.84-2.21-54.07-2.21L-54.07-2.21Q-60.43-2.21-64.23-7.63L-64.23-7.63Q-67.68-12.59-67.68-20.74L-67.68-20.74Q-67.68-29.53-63.70-34.56L-63.70-34.56Q-59.91-39.23-53.93-39.23ZM-54.07-34.21L-54.07-34.21Q-57.94-34.21-60.12-30.16L-60.12-30.16Q-62.05-26.61-62.05-20.74L-62.05-20.74Q-62.05-15.33-60.47-11.92L-60.47-11.92Q-58.29-7.24-54-7.24L-54-7.24Q-50.06-7.24-47.88-11.29L-47.88-11.29Q-45.95-14.84-45.95-20.67L-45.95-20.67Q-45.95-26.75-47.95-30.23L-47.95-30.23Q-50.10-34.21-54.07-34.21ZM-28.76-3.66L-33.86-37.86L-28.83-37.86L-25.80-11.67L-20.74-37.86L-15.29-37.86L-10.23-11.67L-7.21-37.86L-2.18-37.86L-7.28-3.66L-12.83-3.66L-18-30.30L-23.20-3.66L-28.76-3.66ZM25.31-34.00L25.31-54.07L30.66-54.07L30.66-3.66L26.75-3.66L25.38-8.12Q21.73-2.21 15.82-2.21L15.82-2.21Q10.37-2.21 7.03-7.49L7.03-7.49Q3.66-12.62 3.66-21.16L3.66-21.16Q3.66-28.16 6.19-32.98L6.19-32.98Q9.53-39.23 15.75-39.23L15.75-39.23Q20.92-39.23 25.31-34.00L25.31-34.00ZM17.05-34.14L17.05-34.14Q13.32-34.14 11.14-30.09L11.14-30.09Q9.28-26.44 9.28-21.09L9.28-21.09Q9.28-15.29 11.00-11.71L11.00-11.71Q13.04-7.31 17.05-7.31L17.05-7.31Q20.67-7.31 23.06-10.93L23.06-10.93Q25.52-14.55 25.52-21.09L25.52-21.09Q25.52-26.40 23.66-29.81L23.66-29.81Q21.38-34.14 17.05-34.14ZM52.35-6.68L40.25-37.86L46.44-37.86L55.02-13.54L62.58-37.86L68.84-37.86L54.70 1.65Q53.54 5.10 50.70 6.19L50.70 6.19Q49.36 6.71 42.19 6.71L42.19 6.71L42.19 1.51L45.28 1.51Q46.37 1.51 46.86 1.51L46.86 1.51Q49.29 1.51 50.03-0.42L50.03-0.42L52.35-6.68ZM87.12-13.82L85.82-57.16L94.18-57.16L92.88-13.82L87.12-13.82ZM85.82 1.09L85.82-7.28L94.18-7.28L94.18 1.09L85.82 1.09Z"
-}));
-console.log("howdy is:", howdy); // animate it
+})); // animate it
 
 anime({
   targets: howdy.children[0],
   strokeDashoffset: [anime.setDashoffset, 0],
-  easing: 'easeInOutSine',
-  duration: 1500,
+  easing: 'easeInExpo',
+  duration: 3500,
   delay: function delay(el, i) {
     return i * 250;
   },
   direction: 'alternate',
-  loop: true
+  loop: false
 });
 },{"animejs":"../node_modules/animejs/lib/anime.es.js"}],"../website.jsx":[function(require,module,exports) {
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+require("./main/globals.sass");
+
 var starContainer = require("./main/stars");
 
 var campfire = require("./main/campfire");
 
+var Card = require("./main/card");
+
+var Spacer = require("./main/spacer");
+
 var howdy = require("./main/howdy");
+
+var _require = require("./main/styles"),
+    columnObj = _require.columnObj;
 
 document.body = /*#__PURE__*/React.createElement("body", null, /*#__PURE__*/React.createElement("div", {
   style: "width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; z-index: -1;"
-}, starContainer), /*#__PURE__*/React.createElement("span", {
-  style: "color: whitesmoke; margin-top: 5rem;"
-}, "Hello World!"), howdy, /*#__PURE__*/React.createElement("div", {
-  style: "position: fixed; bottom: 0; left: 0; width: 100vw; display: flex; flex-direction: column; align-items: center; justify-content: flex-end;"
-}, campfire));
+}, starContainer), /*#__PURE__*/React.createElement("div", {
+  id: "profile"
+}, /*#__PURE__*/React.createElement("style", null, "\n            #profile {\n                position: fixed;\n                left: 5rem;\n                top: 8rem;\n                width: 500px;\n                overflow: hidden;\n            }\n        "), /*#__PURE__*/React.createElement("div", {
+  style: _objectSpread(_objectSpread({
+    backgroundColor: "#500000",
+    width: "100%"
+  }, columnObj), {}, {
+    margin: "0"
+  })
+}, /*#__PURE__*/React.createElement(Spacer, null), howdy, /*#__PURE__*/React.createElement(Spacer, null)), /*#__PURE__*/React.createElement("div", {
+  style: {
+    width: "100%",
+    height: "0.2rem",
+    background: "white"
+  }
+}), /*#__PURE__*/React.createElement(Card, null, /*#__PURE__*/React.createElement("img", {
+  style: "width: 100%",
+  src: "https://user-images.githubusercontent.com/17692058/132935289-ede56d87-d623-46a2-86b1-22925edcb9bb.jpg"
+}), /*#__PURE__*/React.createElement("div", {
+  style: {
+    width: "100%",
+    height: "0.2rem",
+    background: "white"
+  }
+}), /*#__PURE__*/React.createElement("div", {
+  style: {
+    background: "whitesmoke",
+    width: "100%",
+    padding: "2rem",
+    fontSize: "12.5pt",
+    boxSizing: "border-box",
+    color: "darkslategray",
+    paddingTop: "1.5rem",
+    paddingBottom: "1.5rem"
+  }
+}, /*#__PURE__*/React.createElement("span", null, "I've been interested in visualization as long as I've been a programmer. I'm always looking for better ways to improve my illustrations, and this class seemed like a great opportunity to systemically approach the topic."))), /*#__PURE__*/React.createElement("div", {
+  style: _objectSpread(_objectSpread({
+    position: "fixed",
+    left: "680px",
+    top: "0"
+  }, columnObj), {}, {
+    alignItems: "flex-start",
+    overflow: "scroll"
+  })
+}, /*#__PURE__*/React.createElement(Spacer, {
+  size: "8rem"
+}), /*#__PURE__*/React.createElement(Card, {
+  width: "50vw"
+}, /*#__PURE__*/React.createElement("div", {
+  style: {
+    padding: "2rem",
+    boxSizing: "border-box",
+    width: "100%"
+  }
+}, "Test")))));
 document.body.style = "\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100vw;\n    min-height: 100vh;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: flex-start;\n    font-size: 30pt; \n    font-family: sans-serif;\n";
-},{"./main/stars":"../main/stars.jsx","./main/campfire":"../main/campfire.jsx","./main/howdy":"../main/howdy.jsx"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./main/globals.sass":"../main/globals.sass","./main/stars":"../main/stars.jsx","./main/campfire":"../main/campfire.jsx","./main/card":"../main/card.jsx","./main/spacer":"../main/spacer.jsx","./main/howdy":"../main/howdy.jsx","./main/styles":"../main/styles.js"}],"../node_modules/.pnpm/parcel-bundler@1.12.5/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -2281,7 +2475,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62273" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59473" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -2457,5 +2651,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","../website.jsx"], null)
+},{}]},{},["../node_modules/.pnpm/parcel-bundler@1.12.5/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","../website.jsx"], null)
 //# sourceMappingURL=/website.baea1d43.js.map

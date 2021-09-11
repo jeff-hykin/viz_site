@@ -33,6 +33,7 @@
     "web-resource-inliner": "^5.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.5"
+    "@babel/core": "^7.15.5",
+    "sass": "^1.39.2"
   }
 }

@@ -1107,7 +1107,7 @@ _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
 }))();
 
 ;
-},{"quik-client":"../node_modules/quik-client/index.js","regenerator-runtime/runtime":"../node_modules/regenerator-runtime/runtime.js","good-jsx":"../node_modules/good-jsx/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"quik-client":"../node_modules/quik-client/index.js","regenerator-runtime/runtime":"../node_modules/regenerator-runtime/runtime.js","good-jsx":"../node_modules/good-jsx/index.js"}],"../node_modules/.pnpm/parcel-bundler@1.12.5/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -1135,7 +1135,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62273" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59473" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -1311,5 +1311,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","special.js"], null)
+},{}]},{},["../node_modules/.pnpm/parcel-bundler@1.12.5/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","special.js"], null)
 //# sourceMappingURL=/special.c2cbe016.js.map
