@@ -2496,7 +2496,7 @@ document.body = /*#__PURE__*/React.createElement("body", null, /*#__PURE__*/Reac
     width: "100%",
     borderTop: "2px gray solid"
   }
-}), /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("span", null, "Similarly, while there's many I find horrifying, there is one that immediately comes to mind. Allow me to introduce my bank, Wells Fargo. Sometimes the worst visualization is simply no visualization.", /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("img", {
+}), /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("span", null, "Similarly, while there are many I find horrifying, there is one that immediately comes to mind. Allow me to introduce my bank, Wells Fargo. Sometimes the worst visualization is simply no visualization.", /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("img", {
   style: "object-fit: cover; width: 100%; max-width: 70rem;",
   src: "https://user-images.githubusercontent.com/17692058/132937010-11dd9cb7-0b7a-4041-9dde-c4efa464da53.png",
   alt: "",
@@ -2533,7 +2533,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53309" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59584" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

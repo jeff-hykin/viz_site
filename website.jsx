@@ -91,7 +91,7 @@ document.body = <body>
                 <div style={{width:"100%", borderTop: "2px gray solid"}}></div>
                 <Spacer/>
                 <span>
-                    Similarly, while there's many I find horrifying, there is one that immediately comes to mind. Allow me to introduce my bank, Wells Fargo. Sometimes the worst visualization is simply no visualization.
+                    Similarly, while there are many I find horrifying, there is one that immediately comes to mind. Allow me to introduce my bank, Wells Fargo. Sometimes the worst visualization is simply no visualization.
                     <Spacer/>
                     <img style="object-fit: cover; width: 100%; max-width: 70rem;" src="https://user-images.githubusercontent.com/17692058/132937010-11dd9cb7-0b7a-4041-9dde-c4efa464da53.png" alt="" srcset="" />
                     {/* <div style={{...rowObj}}>
