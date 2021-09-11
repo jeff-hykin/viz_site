@@ -1,9 +1,10 @@
 :root {
   --maroon: #500000;
-  --teal: #4db6ac;
   --blue: #42a5f5;
+  --teal: #4db6ac;
   --green: #81c784;
   --red: #e57373;
+  --charcoal: hsl(180, 0%, 31%);
 }
 
 .shadow {

@@ -8,15 +8,14 @@ const howdy = require("./main/howdy")
 const {columnObj, rowObj} = require("./main/styles")
 
 const ContentCard = ({title, titleColor, titleStyle, content})=>[
-    <Spacer size="1.5rem"></Spacer>,
+    <Spacer size="1.5rem" />,
     <Card width="50vw">
+        {/* Title */}
         <h3 style={{backgroundColor: titleColor, color: "white", display: "flex",padding: "1.9rem 2rem 1.35rem", width: "100%", ...titleStyle}}>
             {title}
         </h3>
-        {/* <Spacer/> */}
-        {/* <div style={{width:"100%", borderTop: "2px gray solid"}}></div>, */}
-        {/* <Spacer/> */}
-        <div style={{padding: "2rem", boxSizing: "border-box", width: "100%", fontSize: "15pt", color: "hsl(180, 0%, 21%)"}}>
+        {/* Content */}
+        <div style={{padding: "2rem", boxSizing: "border-box", width: "100%", fontSize: "15pt", color: "var(--charcoal)"}}>
             {content}
         </div>
     </Card>
@@ -55,9 +54,11 @@ document.body = <body>
             <div style={{width: "100%", height: "0.2rem", background: "white"}} />
             <div style={{background:"white", width:"100%", padding: "2rem", fontSize: "12.5pt", boxSizing: "border-box", color: "hsl(180, 0%, 21%)", paddingTop: "1.5rem", paddingBottom: "1.5rem"}}>
                 <h3>Jeff Hykin</h3>
-                <Spacer></Spacer>
+                <Spacer size="0.2rem" />
+                <div style={{width: "100%", borderTop: "3px solid var(--charcoal)"}}></div>
+                <Spacer size="0.7rem" />
                 <span>
-                    I've been interested in visualization as long as I've been a programmer. I'm always looking ways to improve my illustrations, and this class seemed like a great opportunity to systemically approach the topic. I'm particularly interested in high dimension datasets and I love graph-theory visualizations.
+                    I've been interested in visualization as long as I've been a programmer. I'm always looking ways to improve my illustrations, and this class seemed like a great opportunity to systematically approach the topic. I'm particularly interested in high dimension datasets and I love graph-theory visualizations.
                 </span>
             </div>
         </Card>
@@ -105,11 +106,11 @@ document.body = <body>
             
             <ContentCard
                 title="Projects: Better C++ Syntax"
-                titleColor="var(--green)"
+                titleColor="var(--blue)"
                 content={<span>
-                    As a programmer that likes visualization, natually I want my code to look good.
+                    As a programmer that likes design, natually I want my code to look good.
                     <Spacer/>
-                    C++ is already pretty ugly, but it is even worse without syntax highlighting. The highlighting in VS Code was pretty bad though, so I wrote a library and fixed it.
+                    Right out of the box C++ is pretty ugly and confusing, but it is even worse without syntax highlighting. The highlighting in VS Code was pretty bad though, so I wrote <a href="https://github.com/jeff-hykin/better-cpp-syntax">a library</a> and fixed it.
                     <Spacer/>
                     
                     <img style="object-fit: cover; width: 100%; max-width: 70rem;" src="https://user-images.githubusercontent.com/17692058/132951075-2159af24-5f6a-47cc-9655-923830a30eb0.png" alt="" srcset="" />

@@ -1,10 +1,11 @@
 <style>
 :root {
   --maroon: #500000;
-  --teal: #4db6ac;
   --blue: #42a5f5;
+  --teal: #4db6ac;
   --green: #81c784;
   --red: #e57373;
+  --charcoal: hsl(180, 0%, 31%);
 }
 
 .shadow {
@@ -1410,7 +1411,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61390" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51784" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -3919,7 +3920,7 @@ module.exports = function (_ref) {
   }, properties), children);
 };
 },{"./styles":"../main/styles.js"}],"../main/spacer.jsx":[function(require,module,exports) {
-var _excluded = ["size", "children"];
+var _excluded = ["size", "width", "height", "children"];
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
@@ -3934,11 +3935,13 @@ var _require = require("./styles"),
 module.exports = function (_ref) {
   var _ref$size = _ref.size,
       size = _ref$size === void 0 ? "1rem" : _ref$size,
+      width = _ref.width,
+      height = _ref.height,
       children = _ref.children,
       properties = _objectWithoutProperties(_ref, _excluded);
 
   return /*#__PURE__*/React.createElement("div", _extends({
-    style: "\n        min-width: ".concat(size, ";\n        ").concat(column, "\n        min-height: ").concat(size, ";\n    ")
+    style: "\n        min-width: ".concat(width || size, ";\n        ").concat(column, "\n        min-height: ").concat(height || size, ";\n    ")
   }, properties), children);
 };
 },{"./styles":"../main/styles.js"}],"../main/howdy.jsx":[function(require,module,exports) {
@@ -4018,7 +4021,7 @@ var ContentCard = function ContentCard(_ref) {
       boxSizing: "border-box",
       width: "100%",
       fontSize: "15pt",
-      color: "hsl(180, 0%, 21%)"
+      color: "var(--charcoal)"
     }
   }, content))];
 };
@@ -4061,7 +4064,16 @@ document.body = /*#__PURE__*/React.createElement("body", null, /*#__PURE__*/Reac
     paddingTop: "1.5rem",
     paddingBottom: "1.5rem"
   }
-}, /*#__PURE__*/React.createElement("h3", null, "Jeff Hykin"), /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("span", null, "I've been interested in visualization as long as I've been a programmer. I'm always looking ways to improve my illustrations, and this class seemed like a great opportunity to systemically approach the topic. I'm particularly interested in high dimension datasets and I love graph-theory visualizations."))), /*#__PURE__*/React.createElement("div", {
+}, /*#__PURE__*/React.createElement("h3", null, "Jeff Hykin"), /*#__PURE__*/React.createElement(Spacer, {
+  size: "0.2rem"
+}), /*#__PURE__*/React.createElement("div", {
+  style: {
+    width: "100%",
+    borderTop: "3px solid var(--charcoal)"
+  }
+}), /*#__PURE__*/React.createElement(Spacer, {
+  size: "0.7rem"
+}), /*#__PURE__*/React.createElement("span", null, "I've been interested in visualization as long as I've been a programmer. I'm always looking ways to improve my illustrations, and this class seemed like a great opportunity to systematically approach the topic. I'm particularly interested in high dimension datasets and I love graph-theory visualizations."))), /*#__PURE__*/React.createElement("div", {
   style: _objectSpread(_objectSpread({
     position: "fixed",
     left: "680px",
@@ -4107,8 +4119,10 @@ document.body = /*#__PURE__*/React.createElement("body", null, /*#__PURE__*/Reac
   }), /*#__PURE__*/React.createElement(Spacer, null), "Whats income? Whats an expense? Are their any trends? Any clusters? We can't tell.", /*#__PURE__*/React.createElement(Spacer, null), "Make no mistake, this is a GUI application, not a file or a PDF or a terminal window. The data is being graphically displayed. Not only is there no average, no future projections, no indication of up/downward trends, but there is not so much as a 1% change in hue between a 1\xA2 charge and a $6,000 charge. There isn't even a color distinction between cashflow out and cashflow in. ", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement(Spacer, null), "This format conveys the absolute rock-bottom minimum amount of insight. No format could provide less understanding without quite literally obfuscating the data itself.")
 }), /*#__PURE__*/React.createElement(ContentCard, {
   title: "Projects: Better C++ Syntax",
-  titleColor: "var(--green)",
-  content: /*#__PURE__*/React.createElement("span", null, "As a programmer that likes visualization, natually I want my code to look good.", /*#__PURE__*/React.createElement(Spacer, null), "C++ is already pretty ugly, but it is even worse without syntax highlighting. The highlighting in VS Code was pretty bad though, so I wrote a library and fixed it.", /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("img", {
+  titleColor: "var(--blue)",
+  content: /*#__PURE__*/React.createElement("span", null, "As a programmer that likes design, natually I want my code to look good.", /*#__PURE__*/React.createElement(Spacer, null), "Right out of the box C++ is pretty ugly and confusing, but it is even worse without syntax highlighting. The highlighting in VS Code was pretty bad though, so I wrote ", /*#__PURE__*/React.createElement("a", {
+    href: "https://github.com/jeff-hykin/better-cpp-syntax"
+  }, "a library"), " and fixed it.", /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("img", {
     style: "object-fit: cover; width: 100%; max-width: 70rem;",
     src: "https://user-images.githubusercontent.com/17692058/132951075-2159af24-5f6a-47cc-9655-923830a30eb0.png",
     alt: "",
@@ -4146,7 +4160,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61390" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51784" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

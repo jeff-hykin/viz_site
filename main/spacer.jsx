@@ -1,9 +1,9 @@
 let {column, shadow} = require("./styles")
-module.exports = function ({size="1rem", children, ...properties}) {
+module.exports = function ({size="1rem", width, height, children, ...properties}) {
     return <div style={`
-        min-width: ${size};
+        min-width: ${width||size};
         ${column}
-        min-height: ${size};
+        min-height: ${height||size};
     `} {...properties}>
         {children}
     </div>
