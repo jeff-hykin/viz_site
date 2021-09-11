@@ -189,6 +189,12 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/.pnpm/parcel-bundler@1.12.5/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/css-baseline/css/2.css":[function(require,module,exports) {
+
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
 },{"_css_loader":"../node_modules/.pnpm/parcel-bundler@1.12.5/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/animejs/lib/anime.es.js":[function(require,module,exports) {
 "use strict";
 
@@ -2289,6 +2295,12 @@ module.exports = {
     alignItems: "center",
     justifyContent: "center"
   },
+  rowObj: {
+    display: "flex",
+    flexDirection: "row",
+    alignContent: "center",
+    justifyItems: "center"
+  },
   column: "\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        justify-content: center;\n    ",
   shadow: "\n        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);\n    ",
   shadow3: "\n        box-shadow: 0 8px 17px 2px rgba(0,0,0,0.14),0 3px 14px 2px rgba(0,0,0,0.12),0 5px 5px -3px rgba(0,0,0,0.2);\n    "
@@ -2376,6 +2388,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 require("./main/globals.sass");
 
+require("css-baseline/css/2");
+
 var starContainer = require("./main/stars");
 
 var campfire = require("./main/campfire");
@@ -2387,9 +2401,26 @@ var Spacer = require("./main/spacer");
 var howdy = require("./main/howdy");
 
 var _require = require("./main/styles"),
-    columnObj = _require.columnObj;
+    columnObj = _require.columnObj,
+    rowObj = _require.rowObj;
 
-document.body = /*#__PURE__*/React.createElement("body", null, /*#__PURE__*/React.createElement("div", {
+var ContentCard = function ContentCard(_ref) {
+  var children = _ref.children;
+  return [/*#__PURE__*/React.createElement(Spacer, {
+    size: "1.5rem"
+  }), /*#__PURE__*/React.createElement(Card, {
+    width: "50vw"
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: "2rem",
+      boxSizing: "border-box",
+      width: "100%",
+      fontSize: "15pt"
+    }
+  }, children))];
+};
+
+document.body = /*#__PURE__*/React.createElement("body", null, /*#__PURE__*/React.createElement("style", null, "\n        h3 {\n            font-size: 27pt;\n        }\n    "), /*#__PURE__*/React.createElement("div", {
   style: "width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; z-index: -1;"
 }, starContainer), /*#__PURE__*/React.createElement("div", {
   id: "profile"
@@ -2407,7 +2438,7 @@ document.body = /*#__PURE__*/React.createElement("body", null, /*#__PURE__*/Reac
     background: "white"
   }
 }), /*#__PURE__*/React.createElement(Card, null, /*#__PURE__*/React.createElement("img", {
-  style: "width: 100%",
+  style: "width: 100%; height: 488px;",
   src: "https://user-images.githubusercontent.com/17692058/132935289-ede56d87-d623-46a2-86b1-22925edcb9bb.jpg"
 }), /*#__PURE__*/React.createElement("div", {
   style: {
@@ -2436,18 +2467,29 @@ document.body = /*#__PURE__*/React.createElement("body", null, /*#__PURE__*/Reac
     overflow: "scroll"
   })
 }, /*#__PURE__*/React.createElement(Spacer, {
-  size: "8rem"
-}), /*#__PURE__*/React.createElement(Card, {
-  width: "50vw"
-}, /*#__PURE__*/React.createElement("div", {
+  size: "6.5rem"
+}), /*#__PURE__*/React.createElement(ContentCard, null, /*#__PURE__*/React.createElement("h3", null, "Great Visualizations"), /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("div", {
   style: {
-    padding: "2rem",
-    boxSizing: "border-box",
-    width: "100%"
+    width: "100%",
+    borderTop: "2px gray solid"
   }
-}, "Test")))));
+}), /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("span", null, "While there's many I like, I'd have to say my favorite is a tool called ", /*#__PURE__*/React.createElement("a", {
+  href: "https://github.com/FredrikNoren/ungit"
+}, "Ungit"), /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("div", {
+  style: _objectSpread({}, rowObj)
+}, /*#__PURE__*/React.createElement("img", {
+  style: "width: 30%",
+  src: "https://user-images.githubusercontent.com/17692058/132936366-0b92c052-b350-420e-be97-b9532d0d7d98.png",
+  alt: "",
+  srcset: ""
+}), /*#__PURE__*/React.createElement("img", {
+  style: "object-fit: cover; width: 70%",
+  src: "https://user-images.githubusercontent.com/17692058/132936393-ce33424c-6410-4d22-8a4f-8bca703db9a7.png",
+  alt: "",
+  srcset: ""
+})), /*#__PURE__*/React.createElement(Spacer, null), "What makes it so great is that it allows for infinite 2D panning and highly interactive exploration of ", /*#__PURE__*/React.createElement("code", null, "git"), ". Git has this elegant graph based model of code, but without a tool like ungit it is completely stuck in your head, hidden behind the text in the terminal.")))));
 document.body.style = "\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100vw;\n    min-height: 100vh;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: flex-start;\n    font-size: 30pt; \n    font-family: sans-serif;\n";
-},{"./main/globals.sass":"../main/globals.sass","./main/stars":"../main/stars.jsx","./main/campfire":"../main/campfire.jsx","./main/card":"../main/card.jsx","./main/spacer":"../main/spacer.jsx","./main/howdy":"../main/howdy.jsx","./main/styles":"../main/styles.js"}],"../node_modules/.pnpm/parcel-bundler@1.12.5/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./main/globals.sass":"../main/globals.sass","css-baseline/css/2":"../node_modules/css-baseline/css/2.css","./main/stars":"../main/stars.jsx","./main/campfire":"../main/campfire.jsx","./main/card":"../main/card.jsx","./main/spacer":"../main/spacer.jsx","./main/howdy":"../main/howdy.jsx","./main/styles":"../main/styles.js"}],"../node_modules/.pnpm/parcel-bundler@1.12.5/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -2475,7 +2517,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59473" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50334" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

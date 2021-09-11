@@ -5,6 +5,12 @@ module.exports = {
         alignItems: "center",
         justifyContent: "center",
     },
+    rowObj: {
+        display: "flex",
+        flexDirection: "row",
+        alignContent: "center",
+        justifyItems: "center",
+    },
     column: `
         display: flex;
         flex-direction: column;

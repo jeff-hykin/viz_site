@@ -14,6 +14,254 @@
   border-radius: 2px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
+@-ms-viewport {
+  width: device-width;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, main, summary {
+  display: block;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+html {
+  /* 1 */
+  box-sizing: border-box;
+  /* 2 */
+  touch-action: manipulation;
+  /* 3 */
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  /* 4 */
+  -ms-overflow-style: scrollbar;
+  /* 5 */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  line-height: 1;
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video, main {
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote::before, blockquote::after, q::before, q::after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+hr {
+  /* 1 */
+  box-sizing: content-box;
+  height: 0;
+  /* 2 */
+  overflow: visible;
+}
+
+pre, code, kbd, samp {
+  /* 1 */
+  font-family: monospace, monospace;
+}
+
+pre {
+  /* 2 */
+  overflow: auto;
+  /* 3 */
+  -ms-overflow-style: scrollbar;
+}
+
+a {
+  /* 1 */
+  background-color: transparent;
+  /* 2 */
+  -webkit-text-decoration-skip: objects;
+}
+
+abbr[title] {
+  /* 1 */
+  border-bottom: none;
+  /* 2 */
+  text-decoration: underline;
+  text-decoration: underline dotted;
+}
+
+b, strong {
+  font-weight: bolder;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+img {
+  border-style: none;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+button {
+  border-radius: 0;
+}
+
+input, button, select, optgroup, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+button, [type=reset], [type=submit], html [type=button] {
+  -webkit-appearance: button;
+}
+
+input[type=date], input[type=time], input[type=datetime-local], input[type=month] {
+  -webkit-appearance: listbox;
+}
+
+fieldset {
+  min-width: 0;
+}
+
+[tabindex="-1"]:focus {
+  outline: 0 !important;
+}
+
+button, input {
+  overflow: visible;
+}
+
+button, select {
+  text-transform: none;
+}
+
+button::-moz-focus-inner, [type=button]::-moz-focus-inner, [type=reset]::-moz-focus-inner, [type=submit]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+legend {
+  /* 1 */
+  max-width: 100%;
+  white-space: normal;
+  /* 2 */
+  color: inherit;
+  /* 3 */
+  display: block;
+}
+
+progress {
+  vertical-align: baseline;
+}
+
+textarea {
+  overflow: auto;
+}
+
+[type=checkbox], [type=radio] {
+  /* 1 */
+  box-sizing: border-box;
+  /* 2 */
+  padding: 0;
+}
+
+[type=number]::-webkit-inner-spin-button, [type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[type=search] {
+  /* 1 */
+  -webkit-appearance: textfield;
+  /* 2 */
+  outline-offset: -2px;
+}
+
+[type=search]::-webkit-search-cancel-button, [type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+  /* 1 */
+  -webkit-appearance: button;
+  /* 2 */
+  font: inherit;
+}
+
+template {
+  display: none;
+}
+
+[hidden] {
+  display: none;
+}
+
+button:focus {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+button:-moz-focusring, [type=button]:-moz-focusring, [type=reset]:-moz-focusring, [type=submit]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video, main {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+input, button, select, optgroup, textarea {
+  margin: 0;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  overflow: visible;
+  scroll-behavior: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+br {
+  display: block;
+  content: "";
+  border-bottom: 0px solid transparent;
+}
+
 
 /*# sourceMappingURL=/website.baea1d43.css.map */
 </style><body></body><script>
@@ -1154,7 +1402,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59473" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50334" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -1524,6 +1772,12 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/.pnpm/parcel-bundler@1.12.5/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/css-baseline/css/2.css":[function(require,module,exports) {
+
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
 },{"_css_loader":"../node_modules/.pnpm/parcel-bundler@1.12.5/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/animejs/lib/anime.es.js":[function(require,module,exports) {
 "use strict";
 
@@ -3624,6 +3878,12 @@ module.exports = {
     alignItems: "center",
     justifyContent: "center"
   },
+  rowObj: {
+    display: "flex",
+    flexDirection: "row",
+    alignContent: "center",
+    justifyItems: "center"
+  },
   column: "\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        justify-content: center;\n    ",
   shadow: "\n        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);\n    ",
   shadow3: "\n        box-shadow: 0 8px 17px 2px rgba(0,0,0,0.14),0 3px 14px 2px rgba(0,0,0,0.12),0 5px 5px -3px rgba(0,0,0,0.2);\n    "
@@ -3711,6 +3971,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 require("./main/globals.sass");
 
+require("css-baseline/css/2");
+
 var starContainer = require("./main/stars");
 
 var campfire = require("./main/campfire");
@@ -3722,9 +3984,26 @@ var Spacer = require("./main/spacer");
 var howdy = require("./main/howdy");
 
 var _require = require("./main/styles"),
-    columnObj = _require.columnObj;
+    columnObj = _require.columnObj,
+    rowObj = _require.rowObj;
 
-document.body = /*#__PURE__*/React.createElement("body", null, /*#__PURE__*/React.createElement("div", {
+var ContentCard = function ContentCard(_ref) {
+  var children = _ref.children;
+  return [/*#__PURE__*/React.createElement(Spacer, {
+    size: "1.5rem"
+  }), /*#__PURE__*/React.createElement(Card, {
+    width: "50vw"
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: "2rem",
+      boxSizing: "border-box",
+      width: "100%",
+      fontSize: "15pt"
+    }
+  }, children))];
+};
+
+document.body = /*#__PURE__*/React.createElement("body", null, /*#__PURE__*/React.createElement("style", null, "\n        h3 {\n            font-size: 27pt;\n        }\n    "), /*#__PURE__*/React.createElement("div", {
   style: "width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; z-index: -1;"
 }, starContainer), /*#__PURE__*/React.createElement("div", {
   id: "profile"
@@ -3742,7 +4021,7 @@ document.body = /*#__PURE__*/React.createElement("body", null, /*#__PURE__*/Reac
     background: "white"
   }
 }), /*#__PURE__*/React.createElement(Card, null, /*#__PURE__*/React.createElement("img", {
-  style: "width: 100%",
+  style: "width: 100%; height: 488px;",
   src: "https://user-images.githubusercontent.com/17692058/132935289-ede56d87-d623-46a2-86b1-22925edcb9bb.jpg"
 }), /*#__PURE__*/React.createElement("div", {
   style: {
@@ -3771,18 +4050,29 @@ document.body = /*#__PURE__*/React.createElement("body", null, /*#__PURE__*/Reac
     overflow: "scroll"
   })
 }, /*#__PURE__*/React.createElement(Spacer, {
-  size: "8rem"
-}), /*#__PURE__*/React.createElement(Card, {
-  width: "50vw"
-}, /*#__PURE__*/React.createElement("div", {
+  size: "6.5rem"
+}), /*#__PURE__*/React.createElement(ContentCard, null, /*#__PURE__*/React.createElement("h3", null, "Great Visualizations"), /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("div", {
   style: {
-    padding: "2rem",
-    boxSizing: "border-box",
-    width: "100%"
+    width: "100%",
+    borderTop: "2px gray solid"
   }
-}, "Test")))));
+}), /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("span", null, "While there's many I like, I'd have to say my favorite is a tool called ", /*#__PURE__*/React.createElement("a", {
+  href: "https://github.com/FredrikNoren/ungit"
+}, "Ungit"), /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("div", {
+  style: _objectSpread({}, rowObj)
+}, /*#__PURE__*/React.createElement("img", {
+  style: "width: 30%",
+  src: "https://user-images.githubusercontent.com/17692058/132936366-0b92c052-b350-420e-be97-b9532d0d7d98.png",
+  alt: "",
+  srcset: ""
+}), /*#__PURE__*/React.createElement("img", {
+  style: "object-fit: cover; width: 70%",
+  src: "https://user-images.githubusercontent.com/17692058/132936393-ce33424c-6410-4d22-8a4f-8bca703db9a7.png",
+  alt: "",
+  srcset: ""
+})), /*#__PURE__*/React.createElement(Spacer, null), "What makes it so great is that it allows for infinite 2D panning and highly interactive exploration of ", /*#__PURE__*/React.createElement("code", null, "git"), ". Git has this elegant graph based model of code, but without a tool like ungit it is completely stuck in your head, hidden behind the text in the terminal.")))));
 document.body.style = "\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100vw;\n    min-height: 100vh;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: flex-start;\n    font-size: 30pt; \n    font-family: sans-serif;\n";
-},{"./main/globals.sass":"../main/globals.sass","./main/stars":"../main/stars.jsx","./main/campfire":"../main/campfire.jsx","./main/card":"../main/card.jsx","./main/spacer":"../main/spacer.jsx","./main/howdy":"../main/howdy.jsx","./main/styles":"../main/styles.js"}],"../node_modules/.pnpm/parcel-bundler@1.12.5/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./main/globals.sass":"../main/globals.sass","css-baseline/css/2":"../node_modules/css-baseline/css/2.css","./main/stars":"../main/stars.jsx","./main/campfire":"../main/campfire.jsx","./main/card":"../main/card.jsx","./main/spacer":"../main/spacer.jsx","./main/howdy":"../main/howdy.jsx","./main/styles":"../main/styles.js"}],"../node_modules/.pnpm/parcel-bundler@1.12.5/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -3810,7 +4100,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59473" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50334" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

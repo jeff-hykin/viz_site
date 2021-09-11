@@ -3,6 +3,7 @@ DONE:
     - your name
     - a photo of yourself
     - brief statement on why you are in this class
+
 Create a personal web page for this class. It will be where you 
 - place links to other writings/work you've done.
 - identify (link to) one data visualization that you find particularly helpful/insightful

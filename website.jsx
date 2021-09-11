@@ -1,12 +1,27 @@
 require("./main/globals.sass")
+require("css-baseline/css/2")
 const starContainer = require("./main/stars")
 const campfire = require("./main/campfire")
 const Card = require("./main/card")
 const Spacer = require("./main/spacer")
 const howdy = require("./main/howdy")
-const {columnObj} = require("./main/styles")
+const {columnObj, rowObj} = require("./main/styles")
+
+const ContentCard = ({children})=>[
+    <Spacer size="1.5rem"></Spacer>,
+    <Card width="50vw">
+        <div style={{padding: "2rem", boxSizing: "border-box", width: "100%", fontSize: "15pt"}}>
+            {children}
+        </div>
+    </Card>
+]
 
 document.body = <body>
+    <style>{`
+        h3 {
+            font-size: 27pt;
+        }
+    `}</style>
     {/* Create a background */}
     <div style={`width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; z-index: -1;`}>
         {starContainer}
@@ -23,6 +38,9 @@ document.body = <body>
             }
         `}
         </style>
+        {/* 
+            HOWDY
+         */}
         <div style={{backgroundColor:"#500000", width: "100%", ...columnObj, margin: "0" }}>
             <Spacer />
             {howdy}
@@ -31,7 +49,7 @@ document.body = <body>
         <div style={{width: "100%", height: "0.2rem", background: "white"}} />
         <Card>
             {/* <Spacer /> */}
-            <img style="width: 100%" src="https://user-images.githubusercontent.com/17692058/132935289-ede56d87-d623-46a2-86b1-22925edcb9bb.jpg"/>
+            <img style="width: 100%; height: 488px;" src="https://user-images.githubusercontent.com/17692058/132935289-ede56d87-d623-46a2-86b1-22925edcb9bb.jpg"/>
             <div style={{width: "100%", height: "0.2rem", background: "white"}} />
             <div style={{background:"whitesmoke", width:"100%", padding: "2rem", fontSize: "12.5pt", boxSizing: "border-box", color: "darkslategray", paddingTop: "1.5rem", paddingBottom: "1.5rem"}}>
                 <span>
@@ -39,14 +57,29 @@ document.body = <body>
                 </span>
             </div>
         </Card>
+        {/* 
         
+            list
+            
+         */}
         <div style={{position: "fixed", left: "680px", top: "0", ...columnObj, alignItems: "flex-start", overflow: "scroll"}}>
-            <Spacer size="8rem"></Spacer>
-            <Card width="50vw">
-                <div style={{padding: "2rem", boxSizing: "border-box", width: "100%",}}>
-                    Test
-                </div>
-            </Card>
+            <Spacer size="6.5rem"></Spacer>
+            <ContentCard>
+                <h3>Great Visualizations</h3>
+                <Spacer/>
+                <div style={{width:"100%", borderTop: "2px gray solid"}}></div>
+                <Spacer/>
+                <span>
+                    While there's many I like, I'd have to say my favorite is a tool called <a href="https://github.com/FredrikNoren/ungit">Ungit</a>
+                    <Spacer/>
+                    <div style={{...rowObj}}>
+                        <img style="width: 30%" src="https://user-images.githubusercontent.com/17692058/132936366-0b92c052-b350-420e-be97-b9532d0d7d98.png" alt="" srcset="" />
+                        <img style="object-fit: cover; width: 70%" src="https://user-images.githubusercontent.com/17692058/132936393-ce33424c-6410-4d22-8a4f-8bca703db9a7.png" alt="" srcset="" />
+                    </div>
+                    <Spacer/>
+                    What makes it so great is that it allows for infinite 2D panning and highly interactive exploration of <code>git</code>. Git has this elegant graph based model of code, but without a tool like ungit it is completely stuck in your head, hidden behind the text in the terminal.
+                </span>
+            </ContentCard>
         </div>
         
     </div>
