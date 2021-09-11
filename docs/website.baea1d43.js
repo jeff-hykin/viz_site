@@ -2491,7 +2491,7 @@ document.body = /*#__PURE__*/React.createElement("body", null, /*#__PURE__*/Reac
   src: "https://user-images.githubusercontent.com/17692058/132936393-ce33424c-6410-4d22-8a4f-8bca703db9a7.png",
   alt: "",
   srcset: ""
-})), /*#__PURE__*/React.createElement(Spacer, null), "What makes it so great is that it allows for infinite 2D panning and highly interactive exploration of ", /*#__PURE__*/React.createElement("code", null, "git"), ". Git has this elegant graph based model of code, but without a tool like ungit it is completely stuck in your head, hidden behind the text in the terminal. ", /*#__PURE__*/React.createElement("br", null), "Any time")), /*#__PURE__*/React.createElement(ContentCard, null, /*#__PURE__*/React.createElement("h3", null, "Terrible Visualizations"), /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("div", {
+})), /*#__PURE__*/React.createElement(Spacer, null), "What makes it so great is that it allows for infinite 2D panning and highly interactive exploration of ", /*#__PURE__*/React.createElement("code", null, "git"), ". Git has this elegant graph based model of code, but without a tool like ungit it is completely stuck in your head, hidden behind the text in the terminal. ", /*#__PURE__*/React.createElement("br", null))), /*#__PURE__*/React.createElement(ContentCard, null, /*#__PURE__*/React.createElement("h3", null, "Terrible Visualizations"), /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("div", {
   style: {
     width: "100%",
     borderTop: "2px gray solid"
@@ -2533,7 +2533,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60175" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57192" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

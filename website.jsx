@@ -81,7 +81,6 @@ document.body = <body>
                     </div>
                     <Spacer/>
                     What makes it so great is that it allows for infinite 2D panning and highly interactive exploration of <code>git</code>. Git has this elegant graph based model of code, but without a tool like ungit it is completely stuck in your head, hidden behind the text in the terminal. <br/>
-                    Any time 
                 </span>
             </ContentCard>
             
