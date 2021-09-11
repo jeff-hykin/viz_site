@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+node -e 'require("'"$FORNIX_FOLDER"'/utils").bundleIntoSingleFile({existingHtmlFile: "'"$FORNIX_FOLDER"'/docs/index.html"})'

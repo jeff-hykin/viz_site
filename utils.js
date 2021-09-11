@@ -42,17 +42,11 @@ module.exports = {
                     } catch (error) {
                         
                     }
-                    console.debug(`outputFilePath is:`,outputFilePath)
                     let fsResult = fs.writeFileSync(outputFilePath, result)
                     resolve(fsResult)
                 }
             )
         }
-        setInterval(() => {
-            bundle(()=>0,(error)=>{
-                console.error("Error when bundling into single HTML file:", error)
-            })
-        }, 1000)
         return new Promise(bundle)
     },
 }
