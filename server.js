@@ -23,9 +23,9 @@ app.settings = {
     // afterSystemFrontendSetup: () => {
     //     // anything you want to do
     // },
-    afterSystemBundlerSetup: async () => {
-        await utils.bundleIntoSingleFile({existingHtmlFile: "./docs/index.html"})
-    },
+    // afterSystemBundlerSetup: async () => {
+    //     await utils.bundleIntoSingleFile({existingHtmlFile: "./docs/index.html"})
+    // },
     // afterServerStarted: () => {
     //     // anything you want to do
     // },

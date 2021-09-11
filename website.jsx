@@ -1,5 +1,6 @@
 let starContainer = require("./main/stars")
-let campFire = require("./main/campfire")
+let campfire = require("./main/campfire")
+let howdy = require("./main/howdy")
 
 document.body = <body>
     {/* Create a background */}
@@ -10,8 +11,9 @@ document.body = <body>
     <span style="color: whitesmoke; margin-top: 5rem;">
         Hello World!
     </span>
+    {howdy}
     <div style="position: fixed; bottom: 0; left: 0; width: 100vw; display: flex; flex-direction: column; align-items: center; justify-content: flex-end;" >
-        {campFire}
+        {campfire}
     </div>
 </body>
 

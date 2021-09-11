@@ -2,8 +2,25 @@ const fs = require("fs")
 const path = require("path")
 const process = require("process")
 const inline = require("web-resource-inliner")
+const TextToSVG = require('text-to-svg')
+const textToSVG = TextToSVG.loadSync()
 
 module.exports = {
+    textToSvg({text, fontSize=72, x=0, y=0, anchor='center', attributes, ...options}) {
+        options = {
+            x,
+            y,
+            fontSize,
+            anchor,
+            attributes: {
+                stroke: 'black',
+                fill: 'black',
+                ...attributes,
+            },
+            ...options
+        }
+        return console.log(textToSVG.getSVG(text, options)) 
+    },
     bundleIntoSingleFile({ existingHtmlFile, outputFilePath }) {
         if (!outputFilePath) {
             outputFilePath = existingHtmlFile
