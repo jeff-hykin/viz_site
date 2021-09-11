@@ -2324,7 +2324,7 @@ module.exports = function (_ref) {
       properties = _objectWithoutProperties(_ref, _excluded);
 
   return /*#__PURE__*/React.createElement("div", _extends({
-    style: "\n        ".concat(!width ? "" : "width: ".concat(width, ";"), "\n        background: white;\n        background-color: #fff;\n        -webkit-transition: -webkit-box-shadow .25s;\n        transition: -webkit-box-shadow .25s;\n        transition: box-shadow .25s;\n        transition: box-shadow .25s, -webkit-box-shadow .25s;\n        border-radius: 2px;\n        ").concat(shadow, "\n        ").concat(column, "\n    ")
+    style: "\n        ".concat(!width ? "" : "width: ".concat(width, ";"), "\n        background: white;\n        background-color: #fff;\n        -webkit-transition: -webkit-box-shadow .25s;\n        transition: -webkit-box-shadow .25s;\n        transition: box-shadow .25s;\n        transition: box-shadow .25s, -webkit-box-shadow .25s;\n        border-radius: 3px;\n        overflow: hidden;\n        height: max-content;\n        flex-shrink: 0;\n        ").concat(shadow, "\n        ").concat(column, "\n    ")
   }, properties), children);
 };
 },{"./styles":"../main/styles.js"}],"../main/spacer.jsx":[function(require,module,exports) {
@@ -2405,12 +2405,23 @@ var _require = require("./main/styles"),
     rowObj = _require.rowObj;
 
 var ContentCard = function ContentCard(_ref) {
-  var children = _ref.children;
+  var title = _ref.title,
+      titleColor = _ref.titleColor,
+      titleStyle = _ref.titleStyle,
+      content = _ref.content;
   return [/*#__PURE__*/React.createElement(Spacer, {
     size: "1.5rem"
   }), /*#__PURE__*/React.createElement(Card, {
     width: "50vw"
-  }, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("h3", {
+    style: _objectSpread({
+      backgroundColor: titleColor,
+      color: "white",
+      display: "flex",
+      padding: "1.9rem 2rem 1.35rem",
+      width: "100%"
+    }, titleStyle)
+  }, title), /*#__PURE__*/React.createElement("div", {
     style: {
       padding: "2rem",
       boxSizing: "border-box",
@@ -2418,19 +2429,20 @@ var ContentCard = function ContentCard(_ref) {
       fontSize: "15pt",
       color: "hsl(180, 0%, 21%)"
     }
-  }, children))];
+  }, content))];
 };
 
 document.body = /*#__PURE__*/React.createElement("body", null, /*#__PURE__*/React.createElement("style", null, "\n        h3 {\n            font-size: 27pt;\n        }\n    "), /*#__PURE__*/React.createElement("div", {
-  style: "width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; z-index: -1;"
+  style: "width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; z-index: -1; background: whitesmoke;"
 }, starContainer), /*#__PURE__*/React.createElement("div", {
   id: "profile"
-}, /*#__PURE__*/React.createElement("style", null, "\n            #profile {\n                position: fixed;\n                left: 5rem;\n                top: 6rem;\n                width: 500px;\n                overflow: hidden;\n            }\n        "), /*#__PURE__*/React.createElement("div", {
+}, /*#__PURE__*/React.createElement("style", null, "\n            #profile {\n                position: fixed;\n                left: 5rem;\n                top: 6rem;\n                width: 500px;\n                overflow: visible;\n            }\n        "), /*#__PURE__*/React.createElement(Card, null, /*#__PURE__*/React.createElement("div", {
   style: _objectSpread(_objectSpread({
-    backgroundColor: "#500000",
+    backgroundColor: "var(--teal)",
     width: "100%"
   }, columnObj), {}, {
-    margin: "0"
+    margin: "0",
+    borderRadius: "3px"
   })
 }, /*#__PURE__*/React.createElement(Spacer, null), howdy, /*#__PURE__*/React.createElement(Spacer, null)), /*#__PURE__*/React.createElement("div", {
   style: {
@@ -2438,7 +2450,7 @@ document.body = /*#__PURE__*/React.createElement("body", null, /*#__PURE__*/Reac
     height: "0.2rem",
     background: "white"
   }
-}), /*#__PURE__*/React.createElement(Card, null, /*#__PURE__*/React.createElement("img", {
+}), /*#__PURE__*/React.createElement("img", {
   style: "width: 100%; height: 488px;",
   src: "https://user-images.githubusercontent.com/17692058/132935289-ede56d87-d623-46a2-86b1-22925edcb9bb.jpg"
 }), /*#__PURE__*/React.createElement("div", {
@@ -2449,7 +2461,7 @@ document.body = /*#__PURE__*/React.createElement("body", null, /*#__PURE__*/Reac
   }
 }), /*#__PURE__*/React.createElement("div", {
   style: {
-    background: "whitesmoke",
+    background: "white",
     width: "100%",
     padding: "2rem",
     fontSize: "12.5pt",
@@ -2468,40 +2480,50 @@ document.body = /*#__PURE__*/React.createElement("body", null, /*#__PURE__*/Reac
     justifyContent: "flex-start",
     overflow: "scroll",
     maxHeight: "100vh",
-    scrollbarWidth: "none"
+    scrollbarWidth: "none",
+    padding: "1rem"
   })
 }, /*#__PURE__*/React.createElement(Spacer, {
   size: "4.5rem"
-}), /*#__PURE__*/React.createElement(ContentCard, null, /*#__PURE__*/React.createElement("h3", null, "Great Visualizations"), /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("div", {
-  style: {
-    width: "100%",
-    borderTop: "2px gray solid"
-  }
-}), /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("span", null, "While there's many I like, I'd have to say my favorite is a tool called ", /*#__PURE__*/React.createElement("a", {
-  href: "https://github.com/FredrikNoren/ungit"
-}, "Ungit"), /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("div", {
-  style: _objectSpread({}, rowObj)
-}, /*#__PURE__*/React.createElement("img", {
-  style: "width: 30%",
-  src: "https://user-images.githubusercontent.com/17692058/132936366-0b92c052-b350-420e-be97-b9532d0d7d98.png",
-  alt: "",
-  srcset: ""
-}), /*#__PURE__*/React.createElement("img", {
-  style: "object-fit: cover; width: 70%",
-  src: "https://user-images.githubusercontent.com/17692058/132936393-ce33424c-6410-4d22-8a4f-8bca703db9a7.png",
-  alt: "",
-  srcset: ""
-})), /*#__PURE__*/React.createElement(Spacer, null), "What makes it so great is that it allows for infinite 2D panning and highly interactive exploration of ", /*#__PURE__*/React.createElement("code", null, "git"), ". Git has this elegant graph based model of code, but without a tool like ungit it is completely stuck in your head, hidden behind the text in the terminal. ", /*#__PURE__*/React.createElement("br", null))), /*#__PURE__*/React.createElement(ContentCard, null, /*#__PURE__*/React.createElement("h3", null, "Terrible Visualizations"), /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("div", {
-  style: {
-    width: "100%",
-    borderTop: "2px gray solid"
-  }
-}), /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("span", null, "Similarly, while there are many I find horrifying, there is one that immediately comes to mind. Allow me to introduce my bank, Wells Fargo.", /*#__PURE__*/React.createElement(Spacer, null), "Sometimes the worst visualization is simply no visualization:", /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("img", {
-  style: "object-fit: cover; width: 100%; max-width: 70rem;",
-  src: "https://user-images.githubusercontent.com/17692058/132937010-11dd9cb7-0b7a-4041-9dde-c4efa464da53.png",
-  alt: "",
-  srcset: ""
-}), /*#__PURE__*/React.createElement(Spacer, null), "Whats income? Whats an expense? Are their any trends? Any clusters? We can't tell.", /*#__PURE__*/React.createElement(Spacer, null), "Not only is there no average, no future projections, no indication of up/downward trends, but there is not so much as a 1% change in hue between a 1\xA2 charge and a $6,000 charge. There isn't even a color distinction between cashflow out and cashflow in. ", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement(Spacer, null), "This format conveys the absolute rock-bottom minimum amount of insight. No format could provide less understanding without quite literally obfuscating the data itself.")), /*#__PURE__*/React.createElement(Spacer, {
+}), /*#__PURE__*/React.createElement(ContentCard, {
+  title: "Great Visualizations",
+  titleColor: "var(--green)",
+  content: /*#__PURE__*/React.createElement("span", null, "While there's many I like, I'd have to say my favorite is a tool called ", /*#__PURE__*/React.createElement("a", {
+    href: "https://github.com/FredrikNoren/ungit"
+  }, "Ungit"), /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("div", {
+    style: _objectSpread(_objectSpread({}, rowObj), {}, {
+      minHeight: "210px"
+    })
+  }, /*#__PURE__*/React.createElement("img", {
+    style: "width: 30%;",
+    src: "https://user-images.githubusercontent.com/17692058/132936366-0b92c052-b350-420e-be97-b9532d0d7d98.png",
+    alt: "",
+    srcset: ""
+  }), /*#__PURE__*/React.createElement("img", {
+    style: "object-fit: cover; width: 70%",
+    src: "https://user-images.githubusercontent.com/17692058/132936393-ce33424c-6410-4d22-8a4f-8bca703db9a7.png",
+    alt: "",
+    srcset: ""
+  })), /*#__PURE__*/React.createElement(Spacer, null), "What makes it so great is that it allows for infinite 2D panning and highly interactive exploration of ", /*#__PURE__*/React.createElement("code", null, "git"), ". Git has this elegant graph based model of code, but without a tool like ungit it is completely stuck in your head, hidden behind the text in the terminal. ", /*#__PURE__*/React.createElement("br", null))
+}), /*#__PURE__*/React.createElement(ContentCard, {
+  title: "Terrible Visualizations",
+  titleColor: "var(--red)",
+  content: /*#__PURE__*/React.createElement("span", null, "Similarly, while there are many I find horrifying, there is one that immediately comes to mind. Allow me to introduce my bank, Wells Fargo.", /*#__PURE__*/React.createElement(Spacer, null), "Sometimes the worst visualization is simply no visualization:", /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("img", {
+    style: "object-fit: cover; width: 100%; max-width: 70rem;height: 482.5px;",
+    src: "https://user-images.githubusercontent.com/17692058/132937010-11dd9cb7-0b7a-4041-9dde-c4efa464da53.png",
+    alt: "",
+    srcset: ""
+  }), /*#__PURE__*/React.createElement(Spacer, null), "Whats income? Whats an expense? Are their any trends? Any clusters? We can't tell.", /*#__PURE__*/React.createElement(Spacer, null), "Make no mistake, this is a GUI application, not a file or a PDF or a terminal window. The data is being graphically displayed. Not only is there no average, no future projections, no indication of up/downward trends, but there is not so much as a 1% change in hue between a 1\xA2 charge and a $6,000 charge. There isn't even a color distinction between cashflow out and cashflow in. ", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement(Spacer, null), "This format conveys the absolute rock-bottom minimum amount of insight. No format could provide less understanding without quite literally obfuscating the data itself.")
+}), /*#__PURE__*/React.createElement(ContentCard, {
+  title: "Projects: Better C++ Syntax",
+  titleColor: "var(--green)",
+  content: /*#__PURE__*/React.createElement("span", null, "As a programmer that likes visualization, natually I want my code to look good.", /*#__PURE__*/React.createElement(Spacer, null), "C++ is already pretty ugly, but it is even worse without syntax highlighting. The highlighting in VS Code was pretty bad though, so I wrote a library and fixed it.", /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("img", {
+    style: "object-fit: cover; width: 100%; max-width: 70rem;",
+    src: "https://user-images.githubusercontent.com/17692058/132951075-2159af24-5f6a-47cc-9655-923830a30eb0.png",
+    alt: "",
+    srcset: ""
+  }))
+}), /*#__PURE__*/React.createElement(Spacer, {
   size: "6.5rem"
 }))));
 document.body.style = "\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100vw;\n    min-height: 100vh;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: flex-start;\n    font-size: 30pt; \n    font-family: sans-serif;\n";
@@ -2533,7 +2555,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57192" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61390" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

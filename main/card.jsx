@@ -8,7 +8,10 @@ module.exports = function ({children, width, ...properties}) {
         transition: -webkit-box-shadow .25s;
         transition: box-shadow .25s;
         transition: box-shadow .25s, -webkit-box-shadow .25s;
-        border-radius: 2px;
+        border-radius: 3px;
+        overflow: hidden;
+        height: max-content;
+        flex-shrink: 0;
         ${shadow}
         ${column}
     `} {...properties}>
