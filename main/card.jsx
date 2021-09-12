@@ -1,5 +1,5 @@
 let {column, shadow} = require("./styles")
-module.exports = function ({children, width, ...properties}) {
+module.exports = function ({children, width, style, ...properties}) {
     return <div style={`
         ${!width?"":`width: ${width};`}
         background: white;
@@ -14,6 +14,7 @@ module.exports = function ({children, width, ...properties}) {
         flex-shrink: 0;
         ${shadow}
         ${column}
+        ${style}
     `} {...properties}>
         {children}
     </div>

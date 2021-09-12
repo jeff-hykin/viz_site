@@ -2306,7 +2306,7 @@ module.exports = {
   shadow3: "\n        box-shadow: 0 8px 17px 2px rgba(0,0,0,0.14),0 3px 14px 2px rgba(0,0,0,0.12),0 5px 5px -3px rgba(0,0,0,0.2);\n    "
 };
 },{}],"../main/card.jsx":[function(require,module,exports) {
-var _excluded = ["children", "width"];
+var _excluded = ["children", "width", "style"];
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
@@ -2321,10 +2321,11 @@ var _require = require("./styles"),
 module.exports = function (_ref) {
   var children = _ref.children,
       width = _ref.width,
+      style = _ref.style,
       properties = _objectWithoutProperties(_ref, _excluded);
 
   return /*#__PURE__*/React.createElement("div", _extends({
-    style: "\n        ".concat(!width ? "" : "width: ".concat(width, ";"), "\n        background: white;\n        background-color: #fff;\n        -webkit-transition: -webkit-box-shadow .25s;\n        transition: -webkit-box-shadow .25s;\n        transition: box-shadow .25s;\n        transition: box-shadow .25s, -webkit-box-shadow .25s;\n        border-radius: 3px;\n        overflow: hidden;\n        height: max-content;\n        flex-shrink: 0;\n        ").concat(shadow, "\n        ").concat(column, "\n    ")
+    style: "\n        ".concat(!width ? "" : "width: ".concat(width, ";"), "\n        background: white;\n        background-color: #fff;\n        -webkit-transition: -webkit-box-shadow .25s;\n        transition: -webkit-box-shadow .25s;\n        transition: box-shadow .25s;\n        transition: box-shadow .25s, -webkit-box-shadow .25s;\n        border-radius: 3px;\n        overflow: hidden;\n        height: max-content;\n        flex-shrink: 0;\n        ").concat(shadow, "\n        ").concat(column, "\n        ").concat(style, "\n    ")
   }, properties), children);
 };
 },{"./styles":"../main/styles.js"}],"../main/spacer.jsx":[function(require,module,exports) {
@@ -2381,7 +2382,430 @@ anime({
   direction: 'alternate',
   loop: false
 });
-},{"animejs":"../node_modules/animejs/lib/anime.es.js"}],"../website.jsx":[function(require,module,exports) {
+},{"animejs":"../node_modules/animejs/lib/anime.es.js"}],"../main/campsite.jsx":[function(require,module,exports) {
+module.exports = /*#__PURE__*/React.createElement("svg", {
+  "xmlns:dc": "http://purl.org/dc/elements/1.1/",
+  "xmlns:cc": "http://creativecommons.org/ns#",
+  "xmlns:rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+  "xmlns:svg": "http://www.w3.org/2000/svg",
+  xmlns: "http://www.w3.org/2000/svg",
+  "xmlns:sodipodi": "http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd",
+  "xmlns:inkscape": "http://www.inkscape.org/namespaces/inkscape",
+  width: "1052.3622",
+  height: "744.09448",
+  version: "1.1",
+  "inkscape:version": "0.91 r13725",
+  "sodipodi:docname": "mountain.svg",
+  "inkscape:export-filename": "D:\\ink\\mountain.png",
+  "inkscape:export-xdpi": "90",
+  "inkscape:export-ydpi": "90",
+  style: "transform: scale(1.8)"
+}, /*#__PURE__*/React.createElement("rect", {
+  id: "backgroundrect",
+  width: "100%",
+  height: "100%",
+  x: "0",
+  y: "0",
+  fill: "none",
+  stroke: "none"
+}), /*#__PURE__*/React.createElement("defs", {
+  id: "defs4"
+}), /*#__PURE__*/React.createElement("sodipodi:namedview", {
+  id: "base",
+  pagecolor: "#ffffff",
+  bordercolor: "#666666",
+  borderopacity: "1.0",
+  "inkscape:pageopacity": "0.0",
+  "inkscape:pageshadow": "2",
+  "inkscape:zoom": "0.49497475",
+  "inkscape:cx": "468.63738",
+  "inkscape:cy": "357.80148",
+  "inkscape:document-units": "px",
+  "inkscape:current-layer": "layer1",
+  showgrid: "false",
+  "inkscape:window-width": "1366",
+  "inkscape:window-height": "715",
+  "inkscape:window-x": "-8",
+  "inkscape:window-y": "22",
+  "inkscape:window-maximized": "1"
+}), /*#__PURE__*/React.createElement("metadata", {
+  id: "metadata7"
+}, /*#__PURE__*/React.createElement("rdf:RDF", null, /*#__PURE__*/React.createElement("cc:Work", {
+  "rdf:about": ""
+}, /*#__PURE__*/React.createElement("dc:format", null, "image/svg+xml"), /*#__PURE__*/React.createElement("dc:type", {
+  "rdf:resource": "http://purl.org/dc/dcmitype/StillImage"
+}), /*#__PURE__*/React.createElement("dc:title", null)))), /*#__PURE__*/React.createElement("g", {
+  class: "currentLayer",
+  style: ""
+}, /*#__PURE__*/React.createElement("title", null, "Layer 1"), /*#__PURE__*/React.createElement("ellipse", {
+  ry: "123.10624975954825",
+  rx: "123.96497957214173",
+  style: "opacity:0.05100002;fill:#e9ddaf;fill-opacity:1;stroke:none;stroke-opacity:1",
+  id: "ellipse5722",
+  cx: "512.9146732804254",
+  cy: "362.92005406819715",
+  class: ""
+}), /*#__PURE__*/React.createElement("ellipse", {
+  cy: "362.92005406819715",
+  cx: "512.9146732804254",
+  id: "circle4556",
+  style: "opacity:0.05100002;fill:#decd87;fill-opacity:1;stroke:none;stroke-opacity:1",
+  rx: "110.83483614024577",
+  ry: "107.90292361095776",
+  class: ""
+}), /*#__PURE__*/React.createElement("circle", {
+  style: "opacity:1;fill:#decd87;fill-opacity:1;stroke:none;stroke-opacity:1",
+  id: "path4508",
+  cx: "512.9146732804254",
+  cy: "362.92005406819715",
+  r: "92.26594543457031",
+  class: ""
+}), /*#__PURE__*/React.createElement("path", {
+  style: "fill:#d3bc5f;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1",
+  d: "m539.4164886474609,299.31556701660156 a5.300387859344482,5.300387859344482 0 0 0 -5.300260066986084,5.300256252288818 a5.300387859344482,5.300387859344482 0 0 0 5.300260066986084,5.300256252288818 a5.300387859344482,5.300387859344482 0 0 0 5.300630569458008,-5.300256252288818 a5.300387859344482,5.300387859344482 0 0 0 -5.300630569458008,-5.300256252288818 zm-86.96533966064453,16.882705688476562 a2.748349666595459,2.748349666595459 0 0 0 -2.748436689376831,2.7480578422546387 a2.748349666595459,2.748349666595459 0 0 0 2.748436689376831,2.7484323978424072 a2.748349666595459,2.748349666595459 0 0 0 2.7480578422546387,-2.7484323978424072 a2.748349666595459,2.748349666595459 0 0 0 -2.7480578422546387,-2.7480578422546387 zm27.67983055114746,2.3555850982666016 a4.122524261474609,4.515145778656006 0 0 0 -4.122847080230713,4.514931678771973 a4.122524261474609,4.515145778656006 0 0 0 4.122847080230713,4.515311241149902 a4.122524261474609,4.515145778656006 0 0 0 4.122463226318359,-4.515311241149902 a4.122524261474609,4.515145778656006 0 0 0 -4.122463226318359,-4.514931678771973 zm47.70343780517578,9.42271900177002 a3.1409707069396973,3.1409707069396973 0 0 0 -3.141284227371216,3.141284227371216 a3.1409707069396973,3.1409707069396973 0 0 0 3.141284227371216,3.140909433364868 a3.1409707069396973,3.1409707069396973 0 0 0 3.140909433364868,-3.140909433364868 a3.1409707069396973,3.1409707069396973 0 0 0 -3.140909433364868,-3.141284227371216 zm70.5540542602539,0.3442649245262146 c-6.596904754638672,22.542476654052734 -21.213539123535156,61.379417419433594 -48.174861907958984,84.06964111328125 c-24.433961868286133,20.563228607177734 -66.89801788330078,22.939098358154297 -95.90145874023438,21.734691619873047 A92.26602172851562,92.26602172851562 0 0 0 512.9148406982422,455.18614196777344 A92.26602172851562,92.26602172851562 0 0 0 605.1808013916016,362.92015075683594 A92.26602172851562,92.26602172851562 0 0 0 598.3884735107422,328.3208465576172 zM448.13206481933594,338.5774688720703 a7.852426052093506,7.852426052093506 0 0 0 -7.852458953857422,7.852458953857422 a7.852426052093506,7.852426052093506 0 0 0 7.852458953857422,7.852454662322998 a7.852426052093506,7.852426052093506 0 0 0 7.852454662322998,-7.852454662322998 a7.852426052093506,7.852426052093506 0 0 0 -7.852454662322998,-7.852458953857422 zm69.49392700195312,24.34269142150879 a3.5335919857025146,3.729902744293213 0 0 0 -3.5333776473999023,3.72961163520813 a3.5335919857025146,3.729902744293213 0 0 0 3.5333776473999023,3.7299952507019043 a3.5335919857025146,3.729902744293213 0 0 0 3.533756971359253,-3.7299952507019043 a3.5335919857025146,3.729902744293213 0 0 0 -3.533756971359253,-3.72961163520813 zm-63.80082321166992,27.87606430053711 a2.944659948348999,2.748349666595459 0 0 0 -2.944671154022217,2.7484323978424072 a2.944659948348999,2.748349666595459 0 0 0 2.944671154022217,2.7480578422546387 a2.944659948348999,2.748349666595459 0 0 0 2.944671154022217,-2.7480578422546387 a2.944659948348999,2.748349666595459 0 0 0 -2.944671154022217,-2.7484323978424072 zm54.5743408203125,10.208040237426758 a5.300387859344482,5.693008899688721 0 0 0 -5.300251483917236,5.693108081817627 a5.300387859344482,5.693008899688721 0 0 0 5.300251483917236,5.693108081817627 a5.300387859344482,5.693008899688721 0 0 0 5.300256252288818,-5.693108081817627 a5.300387859344482,5.693008899688721 0 0 0 -5.300256252288818,-5.693108081817627 z",
+  id: "path4510",
+  "inkscape:connector-curvature": "0",
+  class: ""
+}), /*#__PURE__*/React.createElement("g", {
+  id: "g4408",
+  class: ""
+}, /*#__PURE__*/React.createElement("g", {
+  id: "g4186",
+  "stroke-width": "0"
+}, /*#__PURE__*/React.createElement("path", {
+  "sodipodi:nodetypes": "cccc",
+  "inkscape:connector-curvature": "0",
+  id: "path4176",
+  d: "M439.550724029541,529.0165405273438 L501.82458877563477,412.63360595703125 L568.207706451416,528.454833984375 z",
+  style: "fill:#455a57;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  id: "path4178",
+  d: "m501.5087013244629,413.22393798828125 l-61.95779037475586,115.79137420654297 l61.95779037475586,-0.2706800699234009 l0,-115.52069854736328 z",
+  style: "fill:#384845;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1",
+  "inkscape:connector-curvature": "0",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  "sodipodi:nodetypes": "cccc",
+  "inkscape:connector-curvature": "0",
+  id: "path4168",
+  d: "M460.48682022094727,582.6151123046875 L572.4099769592285,373.4437255859375 L691.7187538146973,581.6045532226562 z",
+  style: "fill:#6f918a;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  id: "path4180",
+  d: "m501.82483291625977,412.63360595703125 l-18.87869644165039,35.28192138671875 l8.762750625610352,12.788825035095215 l5.690257549285889,-9.558053970336914 l6.954212665557861,14.336813926696777 l3.161118507385254,-12.650227546691895 l5.0576653480529785,8.433481216430664 l9.260268211364746,-13.7247953414917 l-20.007577896118164,-34.9079704284668 z",
+  style: "fill:#dbe3de;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1",
+  "inkscape:connector-curvature": "0",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  id: "path4170",
+  d: "m571.8421669006348,374.5059814453125 l-111.35511779785156,208.10882568359375 l111.35511779785156,-0.48648801445961 l0,-207.62232971191406 z",
+  style: "fill:#536c67;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1",
+  "inkscape:connector-curvature": "0",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  id: "path4182",
+  d: "m501.5087013244629,413.22393798828125 l-18.562705993652344,34.691646575927734 l8.762750625610352,12.788825035095215 l5.690257549285889,-9.558053970336914 l4.109696865081787,8.472615242004395 l0,-46.3950309753418 z",
+  style: "fill:#b7c8be;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1",
+  "inkscape:connector-curvature": "0",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  id: "path4172",
+  d: "m572.4102210998535,373.4437255859375 l-33.93019485473633,63.41128921508789 l15.749063491821289,22.985023498535156 l10.22695541381836,-17.178443908691406 l12.498628616333008,25.767181396484375 l5.681398391723633,-22.735919952392578 l9.090009689331055,15.15727710723877 l16.64323616027832,-24.667219161987305 l-35.95909881591797,-62.73918533325195 z",
+  style: "fill:#dbe3de;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1",
+  "inkscape:connector-curvature": "0",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  style: "fill:#6f918a;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1",
+  d: "M351.999698638916,583.1788330078125 L440.3755226135254,418.015380859375 L534.5830116271973,582.3802490234375 z",
+  id: "path4138",
+  "inkscape:connector-curvature": "0",
+  "sodipodi:nodetypes": "cccc",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  "inkscape:connector-curvature": "0",
+  style: "fill:#536c67;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1",
+  d: "m439.92724990844727,418.8541259765625 l-87.92726135253906,164.32505798339844 l87.92726135253906,-0.38413676619529724 l0,-163.94093322753906 z",
+  id: "path4150",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  id: "path4174",
+  d: "m571.8421669006348,374.5059814453125 l-33.36227035522461,62.35038757324219 l15.749063491821289,22.985023498535156 l10.22695541381836,-17.178443908691406 l7.386250019073486,15.22761344909668 l0,-83.38459014892578 z",
+  style: "fill:#b7c8be;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1",
+  "inkscape:connector-curvature": "0",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  "inkscape:connector-curvature": "0",
+  style: "fill:#dbe3de;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1",
+  d: "m440.3757667541504,418.015380859375 l-26.791658401489258,50.07026290893555 l12.435637474060059,18.14923667907715 l8.075319290161133,-13.564294815063477 l9.869056701660156,20.346057891845703 l4.486096382141113,-17.952539443969727 l7.177572250366211,11.96835708618164 l13.141687393188477,-19.47751235961914 l-28.393705368041992,-49.53956985473633 z",
+  id: "path4140",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  "inkscape:connector-curvature": "0",
+  style: "fill:#b7c8be;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1",
+  d: "m439.92724990844727,418.8541259765625 l-26.34322166442871,49.23257064819336 l12.435637474060059,18.14923667907715 l8.075319290161133,-13.564294815063477 l5.8322672843933105,12.023898124694824 l0,-65.8414077758789 z",
+  id: "path4152",
+  "stroke-width": "0"
+})), /*#__PURE__*/React.createElement("rect", {
+  ry: "30.33986473083496",
+  y: "-334.43114471435524",
+  x: "1835.7710399627686",
+  height: "83.0354232788086",
+  width: "669.0738525390625",
+  id: "rect4200",
+  style: "opacity:1;fill:#88aa00;fill-opacity:1;stroke:none;stroke-opacity:1",
+  transform: "matrix(0.561871, 0, 0, 0.499668, -701, 741.506)",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  "sodipodi:nodetypes": "cscscc",
+  "inkscape:connector-curvature": "0",
+  id: "path4215",
+  d: "m321.10397720336914,610.015380859375 c0,0 37.72563552856445,42.82870101928711 80.26730346679688,59.24637222290039 c42.541664123535156,16.41766929626465 107.55818176269531,62.815433502197266 107.55818176269531,62.815433502197266 c0,0 93.11005401611328,-55.67731857299805 120.40094757080078,-62.8154411315918 c45.45944595336914,-11.89023494720459 84.28067016601562,-63.52924728393555 84.28067016601562,-63.52924728393555 z",
+  style: "fill:#5a351c;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  style: "opacity:1;fill:#3e2311;fill-opacity:1;stroke:none;stroke-opacity:1",
+  d: "m508.903018951416,607.9673461914062 l-187.79885864257812,2.0484447479248047 c0,0 37.72578811645508,42.82913589477539 80.26744842529297,59.246795654296875 c42.49297332763672,16.39887809753418 107.3828353881836,62.690208435058594 107.53137969970703,62.796199798583984 l0,-124.09144592285156 z",
+  id: "rect4368",
+  "inkscape:connector-curvature": "0",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("rect", {
+  ry: "17.219924926757812",
+  y: "-312.0754928588865",
+  x: "1803.8343486785889",
+  height: "67.06707000732422",
+  width: "731.3504638671875",
+  id: "rect4202",
+  style: "opacity:1;fill:#668000;fill-opacity:1;stroke:none;stroke-opacity:1",
+  transform: "matrix(0.561871, 0, 0, 0.499668, -701, 741.506)",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("rect", {
+  y: "-366.16625213623024",
+  x: "2491.74822807312",
+  height: "77.78174591064453",
+  width: "13.131982803344727",
+  id: "rect4245",
+  style: "opacity:1;fill:#784421;fill-opacity:1;stroke:none;stroke-opacity:1",
+  transform: "matrix(0.561871, 0, 0, 0.499668, -701, 741.506)",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  id: "path4247",
+  d: "m702.1624794006348,493.43365478515625 a29.230138778686523,24.732315063476562 0 0 0 -29.229368209838867,24.73260498046875 a29.230138778686523,24.732315063476562 0 0 0 0.1569305956363678,2.338292121887207 a29.230138778686523,24.732315063476562 0 0 0 -16.9011287689209,22.39333724975586 a29.230138778686523,24.732315063476562 0 0 0 29.230470657348633,24.732601165771484 a29.230138778686523,24.732315063476562 0 0 0 16.659696578979492,-4.445288181304932 a29.230138778686523,24.732315063476562 0 0 0 16.260242462158203,4.19350528717041 a29.230138778686523,24.732315063476562 0 0 0 29.229368209838867,-24.73260498046875 a29.230138778686523,24.732315063476562 0 0 0 -16.312915802001953,-22.15228843688965 a29.230138778686523,24.732315063476562 0 0 0 0.13717518746852875,-2.32755446434021 a29.230138778686523,24.732315063476562 0 0 0 -29.230470657348633,-24.73260498046875 z",
+  style: "opacity:1;fill:#88aa00;fill-opacity:1;stroke:none;stroke-opacity:1",
+  "inkscape:connector-curvature": "0",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  id: "rect4271",
+  d: "m702.1624794006348,493.43365478515625 a29.230138778686523,24.732315063476562 0 0 0 -29.229368209838867,24.73260498046875 a29.230138778686523,24.732315063476562 0 0 0 0.1569305956363678,2.338292121887207 a29.230138778686523,24.732315063476562 0 0 0 -16.9011287689209,22.39333724975586 a29.230138778686523,24.732315063476562 0 0 0 29.230470657348633,24.732601165771484 a29.230138778686523,24.732315063476562 0 0 0 16.659696578979492,-4.445288181304932 a29.230138778686523,24.732315063476562 0 0 0 0.9349871277809143,0.4752694368362427 l0,-70.20143127441406 a29.230138778686523,24.732315063476562 0 0 0 -0.8515886664390564,-0.025383148342370987 z",
+  style: "opacity:1;fill:#668000;fill-opacity:1;stroke:none;stroke-opacity:1",
+  "inkscape:connector-curvature": "0",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("rect", {
+  y: "-381.014579772949",
+  x: "1841.2505474090576",
+  height: "78.57142639160156",
+  width: "14.285714149475098",
+  id: "rect4276",
+  style: "opacity:1;fill:#a05a2c;fill-opacity:1;stroke:none;stroke-opacity:1",
+  transform: "matrix(0.561871, 0, 0, 0.499668, -701, 741.506)",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  "sodipodi:nodetypes": "cccc",
+  "inkscape:connector-curvature": "0",
+  id: "path4278",
+  d: "m317.0906105041504,570.7548828125 l40.53499221801758,0 l-20.46816635131836,-28.195560455322266 z",
+  style: "fill:#89a02c;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  "inkscape:connector-curvature": "0",
+  id: "rect4280",
+  d: "m337.15695571899414,542.5599975585938 l-20.0660400390625,28.196125030517578 l20.46769142150879,0 l0,-27.642780303955078 l-0.40165355801582336,-0.5533425211906433 z",
+  style: "opacity:1;fill:#677821;fill-opacity:1;stroke:none;stroke-opacity:1",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  style: "fill:#89a02c;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1",
+  d: "m317.0906105041504,570.7548828125 l40.53499221801758,0 l-20.46816635131836,-28.195560455322266 z",
+  id: "path4295",
+  "inkscape:connector-curvature": "0",
+  "sodipodi:nodetypes": "cccc",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  style: "opacity:1;fill:#677821;fill-opacity:1;stroke:none;stroke-opacity:1",
+  d: "m337.15695571899414,542.5599975585938 l-20.0660400390625,28.196125030517578 l20.46769142150879,0 l0,-27.642780303955078 l-0.40165355801582336,-0.5533425211906433 z",
+  id: "path4297",
+  "inkscape:connector-curvature": "0",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  "sodipodi:nodetypes": "cccc",
+  "inkscape:connector-curvature": "0",
+  id: "path4303",
+  d: "m317.0906105041504,563.9134521484375 l40.53499221801758,0 l-20.46816635131836,-28.195560455322266 z",
+  style: "fill:#abc837;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  "inkscape:connector-curvature": "0",
+  id: "path4305",
+  d: "m337.15695571899414,535.716552734375 l-20.0660400390625,28.196125030517578 l20.46769142150879,0 l0,-27.642780303955078 l-0.40165355801582336,-0.5533425211906433 z",
+  style: "opacity:1;fill:#7c9128;fill-opacity:1;stroke:none;stroke-opacity:1",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  style: "fill:#afc941;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1",
+  d: "m317.0906105041504,553.745849609375 l40.53499221801758,0 l-20.46816635131836,-28.195560455322266 z",
+  id: "path4307",
+  "inkscape:connector-curvature": "0",
+  "sodipodi:nodetypes": "cccc",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  style: "opacity:1;fill:#92aa2f;fill-opacity:1;stroke:none;stroke-opacity:1",
+  d: "m337.15695571899414,525.5509033203125 l-20.0660400390625,28.196125030517578 l20.46769142150879,0 l0,-27.642780303955078 l-0.40165355801582336,-0.5533425211906433 z",
+  id: "path4309",
+  "inkscape:connector-curvature": "0",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  "sodipodi:nodetypes": "cccc",
+  "inkscape:connector-curvature": "0",
+  id: "path4319",
+  d: "m317.0906105041504,544.4093017578125 l40.53499221801758,0 l-20.46816635131836,-28.195560455322266 z",
+  style: "fill:#b6d04f;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  "inkscape:connector-curvature": "0",
+  id: "path4321",
+  d: "m337.15695571899414,516.2124633789062 l-20.0660400390625,28.196125030517578 l20.46769142150879,0 l0,-27.642780303955078 l-0.40165355801582336,-0.5533425211906433 z",
+  style: "opacity:1;fill:#a5c134;fill-opacity:1;stroke:none;stroke-opacity:1",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("rect", {
+  y: "-383.68798065185524",
+  x: "1949.6516704559326",
+  height: "54.367774963378906",
+  width: "9.885050773620605",
+  id: "rect4276-0",
+  style: "opacity:1;fill:#a05a2c;fill-opacity:1;stroke:none;stroke-opacity:1",
+  transform: "matrix(0.561871, 0, 0, 0.499668, -701, 741.506)",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  "sodipodi:nodetypes": "cccc",
+  "inkscape:connector-curvature": "0",
+  id: "path4278-5",
+  d: "m383.0668067932129,563.3727416992188 l28.048328399658203,0 l-14.163017272949219,-19.510021209716797 z",
+  style: "fill:#89a02c;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  "inkscape:connector-curvature": "0",
+  id: "rect4280-8",
+  d: "m396.95178604125977,543.8629150390625 l-13.884767532348633,19.51041030883789 l14.162691116333008,0 l0,-19.127519607543945 l-0.27792391180992126,-0.3828907608985901 z",
+  style: "opacity:1;fill:#677821;fill-opacity:1;stroke:none;stroke-opacity:1",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  style: "fill:#89a02c;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1",
+  d: "m383.0668067932129,563.3727416992188 l28.048328399658203,0 l-14.163017272949219,-19.510021209716797 z",
+  id: "path4295-2",
+  "inkscape:connector-curvature": "0",
+  "sodipodi:nodetypes": "cccc",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  style: "opacity:1;fill:#677821;fill-opacity:1;stroke:none;stroke-opacity:1",
+  d: "m396.95178604125977,543.8629150390625 l-13.884767532348633,19.51041030883789 l14.162691116333008,0 l0,-19.127519607543945 l-0.27792391180992126,-0.3828907608985901 z",
+  id: "path4297-6",
+  "inkscape:connector-curvature": "0",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  "sodipodi:nodetypes": "cccc",
+  "inkscape:connector-curvature": "0",
+  id: "path4303-8",
+  d: "m383.0668067932129,558.6385498046875 l28.048328399658203,0 l-14.163017272949219,-19.510021209716797 z",
+  style: "fill:#abc837;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  "inkscape:connector-curvature": "0",
+  id: "path4305-6",
+  d: "m396.95178604125977,539.1267700195312 l-13.884767532348633,19.510404586791992 l14.162691116333008,0 l0,-19.127519607543945 l-0.27792391180992126,-0.38288575410842896 z",
+  style: "opacity:1;fill:#7c9128;fill-opacity:1;stroke:none;stroke-opacity:1",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  style: "fill:#afc941;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1",
+  d: "m383.0668067932129,551.6022338867188 l28.048328399658203,0 l-14.163017272949219,-19.510021209716797 z",
+  id: "path4307-5",
+  "inkscape:connector-curvature": "0",
+  "sodipodi:nodetypes": "cccc",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  style: "opacity:1;fill:#92aa2f;fill-opacity:1;stroke:none;stroke-opacity:1",
+  d: "m396.95178604125977,532.0924682617188 l-13.884767532348633,19.51041030883789 l14.162691116333008,0 l0,-19.127519607543945 l-0.27792391180992126,-0.3828907608985901 z",
+  id: "path4309-2",
+  "inkscape:connector-curvature": "0",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  "sodipodi:nodetypes": "cccc",
+  "inkscape:connector-curvature": "0",
+  id: "path4319-9",
+  d: "m383.0668067932129,545.1410522460938 l28.048328399658203,0 l-14.163017272949219,-19.510019302368164 z",
+  style: "fill:#b6d04f;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  "inkscape:connector-curvature": "0",
+  id: "path4321-3",
+  d: "m396.95178604125977,525.6311645507812 l-13.884767532348633,19.510404586791992 l14.162691116333008,0 l0,-19.127519607543945 l-0.27792391180992126,-0.38288575410842896 z",
+  style: "opacity:1;fill:#a5c134;fill-opacity:1;stroke:none;stroke-opacity:1",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  id: "path4390",
+  d: "m699.5636024475098,522.2152099609375 a21.27083396911621,17.981889724731445 0 0 0 -21.269887924194336,17.98219871520996 a21.27083396911621,17.981889724731445 0 0 0 21.269887924194336,17.98219871520996 a21.27083396911621,17.981889724731445 0 0 0 21.27099609375,-17.98219871520996 a21.27083396911621,17.981889724731445 0 0 0 -21.27099609375,-17.98219871520996 z",
+  style: "opacity:1;fill:#88aa00;fill-opacity:1;stroke:none;stroke-opacity:1",
+  "inkscape:connector-curvature": "0",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("rect", {
+  y: "-402.236503601074",
+  x: "2206.8574810028076",
+  height: "84.79337310791016",
+  width: "7.708488464355469",
+  id: "rect4399",
+  style: "opacity:1;fill:#784421;fill-opacity:1;stroke:none;stroke-opacity:1",
+  transform: "matrix(0.561871, 0, 0, 0.499668, -701, 741.506)",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("ellipse", {
+  ry: "43.761871337890625",
+  rx: "46.407936096191406",
+  cy: "-419.05236053466774",
+  cx: "2208.371030807495",
+  id: "path4401",
+  style: "opacity:1;fill:#aad400;fill-opacity:1;stroke:none;stroke-opacity:1",
+  transform: "matrix(0.561871, 0, 0, 0.499668, -701, 741.506)",
+  "stroke-width": "0"
+}), /*#__PURE__*/React.createElement("path", {
+  "inkscape:connector-curvature": "0",
+  id: "rect4403",
+  d: "m539.8194007873535,510.253662109375 a26.075275421142578,21.866413116455078 0 0 0 -26.075023651123047,21.866104125976562 a26.075275421142578,21.866413116455078 0 0 0 26.075023651123047,21.866886138916016 a26.075275421142578,21.866413116455078 0 0 0 0.6863762140274048,-0.020436430349946022 l0,-43.683441162109375 a26.075275421142578,21.866413116455078 0 0 0 -0.6863762140274048,-0.02913065440952778 z",
+  style: "opacity:1;fill:#88aa00;fill-opacity:1;stroke:none;stroke-opacity:1",
+  "stroke-width": "0"
+})), /*#__PURE__*/React.createElement("path", {
+  "sodipodi:nodetypes": "ccscscc",
+  "inkscape:connector-curvature": "0",
+  id: "path4469",
+  d: "m393.1651611328125,322.6317596435547 l53.78911590576172,0 c0,0 -0.8710747361183167,-10.8884859085083 -12.195104598999023,-13.501727104187012 c-11.32402515411377,-2.6132330894470215 -15.897184371948242,5.226475238800049 -15.897184371948242,5.226475238800049 c0,0 -5.226475238800049,-3.266545057296753 -11.10626220703125,0.6533116698265076 c-5.8797783851623535,3.919856548309326 -4.79093074798584,5.662010192871094 -4.79093074798584,5.662010192871094 z",
+  style: "fill:#b7c4c8;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1",
+  class: ""
+}), /*#__PURE__*/React.createElement("path", {
+  "inkscape:connector-curvature": "0",
+  style: "opacity:1;fill:#93a7ac;fill-opacity:1;stroke:none;stroke-opacity:1",
+  d: "m426.9194641113281,308.96275329589844 c-5.64824914932251,1.2665892839431763 -8.057548522949219,5.393733978271484 -8.057548522949219,5.393733978271484 c0,0 -5.226434707641602,-3.266580820083618 -11.10621166229248,0.6532710790634155 c-5.879782676696777,3.9198520183563232 -4.790998935699463,5.662159442901611 -4.790998935699463,5.662159442901611 l-9.79946231842041,1.9598084688186646 l33.75421905517578,0 l0,-13.668972969055176 z",
+  id: "rect4476",
+  class: ""
+}), /*#__PURE__*/React.createElement("path", {
+  style: "fill:#dbe3de;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1",
+  d: "m575.4722137451172,342.65003967285156 c0.8337307572364807,0 41.26947021484375,0 41.26947021484375,0 c0,0 1.4590232372283936,-8.33726692199707 -3.5433433055877686,-10.421582221984863 c-5.00234842300415,-2.084320068359375 -8.545687675476074,1.4590187072753906 -8.545687675476074,1.4590187072753906 c0,0 -3.5433433055877686,-6.461385250091553 -11.463747024536133,-6.461385250091553 c-7.920403003692627,0 -8.96255874633789,6.87824821472168 -8.96255874633789,6.87824821472168 c0,0 -2.7096123695373535,-6.669814586639404 -12.297468185424805,-3.75177264213562 c-9.587851524353027,2.918046474456787 -7.71196985244751,12.297472953796387 -7.71196985244751,12.297472953796387 z",
+  id: "path4495",
+  "inkscape:connector-curvature": "0",
+  class: ""
+}), /*#__PURE__*/React.createElement("path", {
+  "inkscape:connector-curvature": "0",
+  style: "opacity:1;fill:#b7c8be;fill-opacity:1;stroke:none;stroke-opacity:1",
+  d: "m593.1889801025391,327.2259979248047 c-7.920403003692627,0 -8.962550163269043,6.8784284591674805 -8.962550163269043,6.8784379959106445 c0,0 -2.7097434997558594,-6.669994354248047 -12.297595977783203,-3.751943826675415 c-9.58785629272461,2.918032646179199 -7.71183443069458,12.297591209411621 -7.71183443069458,12.297591209411621 l11.255228042602539,0 l19.592525482177734,0 l0,-15.297743797302246 c-0.5958198308944702,-0.0811285600066185 -1.2205075025558472,-0.126339390873909 -1.875773549079895,-0.126339390873909 z",
+  id: "rect4497",
+  class: ""
+})));
+},{}],"../website.jsx":[function(require,module,exports) {
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -2392,6 +2816,8 @@ require("./main/globals.sass");
 
 require("css-baseline/css/2");
 
+var anime = require("animejs").default;
+
 var starContainer = require("./main/stars");
 
 var campfire = require("./main/campfire");
@@ -2401,6 +2827,8 @@ var Card = require("./main/card");
 var Spacer = require("./main/spacer");
 
 var howdy = require("./main/howdy");
+
+var campsite = require("./main/campsite");
 
 var _require = require("./main/styles"),
     columnObj = _require.columnObj,
@@ -2434,11 +2862,7 @@ var ContentCard = function ContentCard(_ref) {
   }, content))];
 };
 
-document.body = /*#__PURE__*/React.createElement("body", null, /*#__PURE__*/React.createElement("style", null, "\n        h3 {\n            font-size: 27pt;\n        }\n    "), /*#__PURE__*/React.createElement("div", {
-  style: "width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; z-index: -1; background: whitesmoke;"
-}, starContainer), /*#__PURE__*/React.createElement("div", {
-  id: "profile"
-}, /*#__PURE__*/React.createElement("style", null, "\n            #profile {\n                position: fixed;\n                left: 5rem;\n                top: 6rem;\n                width: 500px;\n                overflow: visible;\n            }\n        "), /*#__PURE__*/React.createElement(Card, null, /*#__PURE__*/React.createElement("div", {
+var normalProfileContent = /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
   style: _objectSpread(_objectSpread({
     backgroundColor: "var(--teal)",
     width: "100%"
@@ -2481,66 +2905,128 @@ document.body = /*#__PURE__*/React.createElement("body", null, /*#__PURE__*/Reac
   }
 }), /*#__PURE__*/React.createElement(Spacer, {
   size: "0.7rem"
-}), /*#__PURE__*/React.createElement("span", null, "I've been interested in visualization as long as I've been a programmer. I'm always looking ways to improve my illustrations, and this class seemed like a great opportunity to systematically approach the topic. I'm particularly interested in high dimension datasets and I love graph-theory visualizations."))), /*#__PURE__*/React.createElement("div", {
-  style: _objectSpread(_objectSpread({
+}), /*#__PURE__*/React.createElement("span", null, "I've been interested in visualization as long as I've been a programmer. I'm always looking ways to improve my illustrations, and this class seemed like a great opportunity to systematically approach the topic. I'm particularly interested in high dimension datasets and I love graph-theory visualizations.")));
+var flippedProfileContent = /*#__PURE__*/React.createElement("div", {
+  style: "transform: scaleX(-1);"
+}, /*#__PURE__*/React.createElement("div", {
+  style: {
+    padding: "2rem",
+    fontSize: "14pt",
+    color: "var(--charcoal)",
+    lineHeight: "22pt"
+  }
+}, "This website was not created by a website-builder, a template, or a copy-paste codebase. It does not even use a JavaScript framework like React, Vue, or Angular.", /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement(Spacer, null), "Everything from the angle of the shooting stars in the background to the distance of the card's shadows is hand-coded. The images in the background are all SVG's ready to be animated into action. Anime.js is the only major runtime library. Quik Stack (which uses Parcel.js and Express.js) was used for debugging/compiling the code."));
+var profileCard;
+document.body = /*#__PURE__*/React.createElement("body", null, /*#__PURE__*/React.createElement("style", null, "\n        h3 {\n            font-size: 27pt;\n        }\n    "), /*#__PURE__*/React.createElement("div", {
+  style: "width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; z-index: -1; background: whitesmoke;"
+}, starContainer), /*#__PURE__*/React.createElement("div", {
+  style: {
     position: "fixed",
-    left: "680px",
-    top: "0"
-  }, columnObj), {}, {
-    alignItems: "flex-start",
-    justifyContent: "flex-start",
-    overflow: "scroll",
-    maxHeight: "100vh",
-    scrollbarWidth: "none",
-    padding: "1rem"
-  })
-}, /*#__PURE__*/React.createElement(Spacer, {
-  size: "4.5rem"
-}), /*#__PURE__*/React.createElement(ContentCard, {
-  title: "Great Visualizations",
-  titleColor: "var(--green)",
-  content: /*#__PURE__*/React.createElement("span", null, "While there's many I like, I'd have to say my favorite is a tool called ", /*#__PURE__*/React.createElement("a", {
-    href: "https://github.com/FredrikNoren/ungit"
-  }, "Ungit"), /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("div", {
-    style: _objectSpread(_objectSpread({}, rowObj), {}, {
-      minHeight: "210px"
-    })
-  }, /*#__PURE__*/React.createElement("img", {
-    style: "width: 30%;",
-    src: "https://user-images.githubusercontent.com/17692058/132936366-0b92c052-b350-420e-be97-b9532d0d7d98.png",
-    alt: "",
-    srcset: ""
-  }), /*#__PURE__*/React.createElement("img", {
-    style: "object-fit: cover; width: 70%",
-    src: "https://user-images.githubusercontent.com/17692058/132936393-ce33424c-6410-4d22-8a4f-8bca703db9a7.png",
-    alt: "",
-    srcset: ""
-  })), /*#__PURE__*/React.createElement(Spacer, null), "What makes it so great is that it allows for infinite 2D panning and highly interactive exploration of ", /*#__PURE__*/React.createElement("code", null, "git"), ". Git has this elegant graph based model of code, but without a tool like ungit it is completely stuck in your head, hidden behind the text in the terminal. ", /*#__PURE__*/React.createElement("br", null))
-}), /*#__PURE__*/React.createElement(ContentCard, {
-  title: "Terrible Visualizations",
-  titleColor: "var(--red)",
-  content: /*#__PURE__*/React.createElement("span", null, "Similarly, while there are many I find horrifying, there is one that immediately comes to mind. Allow me to introduce my bank, Wells Fargo.", /*#__PURE__*/React.createElement(Spacer, null), "Sometimes the worst visualization is simply no visualization:", /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("img", {
-    style: "object-fit: cover; width: 100%; max-width: 70rem;height: 482.5px;",
-    src: "https://user-images.githubusercontent.com/17692058/132937010-11dd9cb7-0b7a-4041-9dde-c4efa464da53.png",
-    alt: "",
-    srcset: ""
-  }), /*#__PURE__*/React.createElement(Spacer, null), "Whats income? Whats an expense? Are their any trends? Any clusters? We can't tell.", /*#__PURE__*/React.createElement(Spacer, null), "Make no mistake, this is a GUI application, not a file or a PDF or a terminal window. The data is being graphically displayed. Not only is there no average, no future projections, no indication of up/downward trends, but there is not so much as a 1% change in hue between a 1\xA2 charge and a $6,000 charge. There isn't even a color distinction between cashflow out and cashflow in. ", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement(Spacer, null), "This format conveys the absolute rock-bottom minimum amount of insight. No format could provide less understanding without quite literally obfuscating the data itself.")
-}), /*#__PURE__*/React.createElement(ContentCard, {
-  title: "Projects: Better C++ Syntax",
-  titleColor: "var(--blue)",
-  content: /*#__PURE__*/React.createElement("span", null, "As a programmer that likes design, natually I want my code to look good.", /*#__PURE__*/React.createElement(Spacer, null), "Right out of the box C++ is pretty ugly and confusing, but it is even worse without syntax highlighting. The highlighting in VS Code was pretty bad though, so I wrote ", /*#__PURE__*/React.createElement("a", {
-    href: "https://github.com/jeff-hykin/better-cpp-syntax"
-  }, "a library"), " and fixed it.", /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("img", {
-    style: "object-fit: cover; width: 100%; max-width: 70rem;",
-    src: "https://user-images.githubusercontent.com/17692058/132951075-2159af24-5f6a-47cc-9655-923830a30eb0.png",
-    alt: "",
-    srcset: ""
-  }))
-}), /*#__PURE__*/React.createElement(Spacer, {
-  size: "6.5rem"
-}))));
+    top: "0",
+    left: "600px"
+  }
+}, campsite, /*#__PURE__*/React.createElement("div", {
+  style: {
+    position: "absolute",
+    top: "34.3rem",
+    left: "18.5rem",
+    transform: "scale(0.35)"
+  }
+}, campfire)), /*#__PURE__*/React.createElement("div", {
+  id: "profile"
+}, /*#__PURE__*/React.createElement("style", null, "\n            #profile {\n                position: fixed;\n                left: 5rem;\n                top: 6rem;\n                width: 500px;\n                overflow: visible;\n            }\n        "), profileCard = /*#__PURE__*/React.createElement(Card, {
+  style: "\n                min-height: 50rem;\n            ",
+  onclick: function onclick(eventObj) {
+    console.log("clicked");
+
+    if (profileCard.isFlipping) {
+      return;
+    }
+
+    profileCard.wasFlipped = !profileCard.wasFlipped;
+    profileCard.isFlipping = true;
+
+    if (profileCard.wasFlipped) {
+      anime({
+        targets: flippedProfileContent,
+        opacity: [{
+          value: 0
+        }, {
+          value: 0
+        }, {
+          value: 1,
+          delay: 450
+        }],
+        easing: "easeInOutSine",
+        duration: 400
+      });
+      anime({
+        targets: normalProfileContent,
+        opacity: [{
+          value: 1
+        }, {
+          value: 0
+        }],
+        easing: "easeInOutSine",
+        duration: 400
+      });
+    } else {
+      anime({
+        targets: normalProfileContent,
+        opacity: [{
+          value: 0
+        }, {
+          value: 0
+        }, {
+          value: 1,
+          delay: 450
+        }],
+        easing: "easeInOutSine",
+        duration: 400
+      });
+      anime({
+        targets: flippedProfileContent,
+        opacity: [{
+          value: 1
+        }, {
+          value: 0
+        }],
+        easing: "easeInOutSine",
+        duration: 400
+      });
+    }
+
+    anime({
+      targets: profileCard,
+      // opacity: [{value:1}, {value:0},{value:1, delay: 450} ],
+      scale: [{
+        value: 1
+      }, {
+        value: 1.05
+      }, {
+        value: 1,
+        delay: 250
+      }],
+      rotateY: {
+        value: "+=180",
+        delay: 200
+      },
+      easing: "easeInOutSine",
+      duration: 400,
+      complete: function complete(anim) {
+        profileCard.isFlipping = false;
+
+        if (profileCard.wasFlipped) {
+          profileCard.children = [flippedProfileContent];
+        } else {
+          profileCard.children = [normalProfileContent];
+        }
+      }
+    });
+  }
+}, normalProfileContent)));
 document.body.style = "\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100vw;\n    min-height: 100vh;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: flex-start;\n    font-size: 30pt; \n    font-family: sans-serif;\n";
-},{"./main/globals.sass":"../main/globals.sass","css-baseline/css/2":"../node_modules/css-baseline/css/2.css","./main/stars":"../main/stars.jsx","./main/campfire":"../main/campfire.jsx","./main/card":"../main/card.jsx","./main/spacer":"../main/spacer.jsx","./main/howdy":"../main/howdy.jsx","./main/styles":"../main/styles.js"}],"../node_modules/.pnpm/parcel-bundler@1.12.5/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./main/globals.sass":"../main/globals.sass","css-baseline/css/2":"../node_modules/css-baseline/css/2.css","animejs":"../node_modules/animejs/lib/anime.es.js","./main/stars":"../main/stars.jsx","./main/campfire":"../main/campfire.jsx","./main/card":"../main/card.jsx","./main/spacer":"../main/spacer.jsx","./main/howdy":"../main/howdy.jsx","./main/campsite":"../main/campsite.jsx","./main/styles":"../main/styles.js"}],"../node_modules/.pnpm/parcel-bundler@1.12.5/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -2568,7 +3054,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51784" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52881" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
