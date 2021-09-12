@@ -2915,7 +2915,7 @@ var flippedProfileContent = /*#__PURE__*/React.createElement("div", {
     color: "var(--charcoal)",
     lineHeight: "22pt"
   }
-}, "This website was not created by a website-builder, a template, or a copy-paste codebase. It does not even use a JavaScript framework like React, Vue, or Angular.", /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement(Spacer, null), "Everything from the angle of the shooting stars in the background to the length of the elements' shadows are hand-coded. The images in the background are all SVG's ready to be animated into action. Anime.js is the only major runtime library. Quik Stack (which uses Parcel.js and Express.js) was used for debugging/compiling the code."));
+}, "This website was not created by a website-builder, a template, or a copy-paste codebase.", /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement(Spacer, null), "Everything from the angle of the shooting stars in the background to the length of the elements' shadows were hand-coded. Not even a JavaScript framework like React, Vue, or Angular was used. The images in the background are all SVG's ready to be animated into action. Anime.js is the only major runtime library. Quik Stack (which uses Parcel.js and Express.js) was used for debugging/compiling the code."));
 var profileCard, floatingLandscape, contentCards;
 document.body = /*#__PURE__*/React.createElement("body", null, /*#__PURE__*/React.createElement("style", null, "\n        h3 {\n            font-size: 27pt;\n        }\n    "), /*#__PURE__*/React.createElement("div", {
   style: "width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; z-index: -1; background: whitesmoke;"
@@ -2968,7 +2968,7 @@ document.body = /*#__PURE__*/React.createElement("body", null, /*#__PURE__*/Reac
 }), /*#__PURE__*/React.createElement(ContentCard, {
   title: "Great Visualizations",
   titleColor: "var(--green)",
-  content: /*#__PURE__*/React.createElement("span", null, "While there's many I like, I'd have to say my favorite is a tool called ", /*#__PURE__*/React.createElement("a", {
+  content: /*#__PURE__*/React.createElement("span", null, "While there are many visualizations I like, I would have to say my favorite is a tool called ", /*#__PURE__*/React.createElement("a", {
     href: "https://github.com/FredrikNoren/ungit"
   }, "Ungit"), /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("div", {
     style: _objectSpread(_objectSpread({}, rowObj), {}, {
@@ -2984,7 +2984,7 @@ document.body = /*#__PURE__*/React.createElement("body", null, /*#__PURE__*/Reac
     src: "https://user-images.githubusercontent.com/17692058/132936393-ce33424c-6410-4d22-8a4f-8bca703db9a7.png",
     alt: "",
     srcset: ""
-  })), /*#__PURE__*/React.createElement(Spacer, null), "What makes it so great is that it allows for infinite 2D panning and highly interactive exploration of ", /*#__PURE__*/React.createElement("code", null, "git"), ". Git has this elegant graph based model of code, but without a tool like ungit it is completely stuck in your head, hidden behind the text in the terminal. ", /*#__PURE__*/React.createElement("br", null))
+  })), /*#__PURE__*/React.createElement(Spacer, null), "(A picture of the Ungit UI is on the right)", /*#__PURE__*/React.createElement(Spacer, null), "What makes it so great is that it allows for infinite 2D panning and highly interactive exploration of the commit-tree (graph) created by Git. Git has always had this elegant model of code, but without a tool like ungit it is completely stuck in our imaginations, and hidden behind a wall of text in the terminal. ", /*#__PURE__*/React.createElement("br", null))
 }), /*#__PURE__*/React.createElement(ContentCard, {
   title: "Terrible Visualizations",
   titleColor: "var(--red)",
@@ -3145,7 +3145,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51055" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51341" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

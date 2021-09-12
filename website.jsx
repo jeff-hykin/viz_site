@@ -45,10 +45,10 @@ const normalProfileContent = <div>
 
 const flippedProfileContent = <div style="transform: scaleX(-1);">
     <div style={{padding: "2rem", fontSize: "14pt", color: "var(--charcoal)", lineHeight: "22pt"}}>
-        This website was not created by a website-builder, a template, or a copy-paste codebase. It does not even use a JavaScript framework like React, Vue, or Angular.
+        This website was not created by a website-builder, a template, or a copy-paste codebase.
         <Spacer />
         <Spacer />
-        Everything from the angle of the shooting stars in the background to the length of the elements' shadows are hand-coded. The images in the background are all SVG's ready to be animated into action. Anime.js is the only major runtime library. Quik Stack (which uses Parcel.js and Express.js) was used for debugging/compiling the code.
+        Everything from the angle of the shooting stars in the background to the length of the elements' shadows were hand-coded. Not even a JavaScript framework like React, Vue, or Angular was used. The images in the background are all SVG's ready to be animated into action. Anime.js is the only major runtime library. Quik Stack (which uses Parcel.js and Express.js) was used for debugging/compiling the code.
     </div>
 </div>
 
@@ -111,14 +111,16 @@ document.body = <body>
                 title="Great Visualizations"
                 titleColor="var(--green)"
                 content={<span>
-                    While there's many I like, I'd have to say my favorite is a tool called <a href="https://github.com/FredrikNoren/ungit">Ungit</a>
+                    While there are many visualizations I like, I would have to say my favorite is a tool called <a href="https://github.com/FredrikNoren/ungit">Ungit</a>
                     <Spacer/>
                     <div style={{...rowObj, minHeight: "210px"}}>
                         <img style="width: 30%;" src="https://user-images.githubusercontent.com/17692058/132936366-0b92c052-b350-420e-be97-b9532d0d7d98.png" alt="" srcset="" />
                         <img style="object-fit: cover; width: 70%" src="https://user-images.githubusercontent.com/17692058/132936393-ce33424c-6410-4d22-8a4f-8bca703db9a7.png" alt="" srcset="" />
                     </div>
                     <Spacer/>
-                    What makes it so great is that it allows for infinite 2D panning and highly interactive exploration of <code>git</code>. Git has this elegant graph based model of code, but without a tool like ungit it is completely stuck in your head, hidden behind the text in the terminal. <br/>
+                    (A picture of the Ungit UI is on the right)
+                    <Spacer/>
+                    What makes it so great is that it allows for infinite 2D panning and highly interactive exploration of the commit-tree (graph) created by Git. Git has always had this elegant model of code, but without a tool like ungit it is completely stuck in our imaginations, and hidden behind a wall of text in the terminal. <br/>
                 </span>}
                 />
             <ContentCard
