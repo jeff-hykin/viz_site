@@ -17,7 +17,7 @@ const ContentCard = ({title, titleColor, titleStyle, content})=>[
             {title}
         </h3>
         {/* Content */}
-        <div style={{padding: "2rem", boxSizing: "border-box", width: "100%", fontSize: "15pt", color: "var(--charcoal)"}}>
+        <div style={{padding: "2rem", boxSizing: "border-box", width: "100%", fontSize: "15pt", lineHeight: "19pt", color: "var(--charcoal)"}}>
             {content}
         </div>
     </Card>
@@ -37,7 +37,7 @@ const normalProfileContent = <div>
         <Spacer size="0.2rem" />
         <div style={{width: "100%", borderTop: "3px solid var(--charcoal)"}}></div>
         <Spacer size="0.7rem" />
-        <span>
+        <span style={{lineHeight: "15.5pt",}}>
             I've been interested in visualization as long as I've been a programmer. I'm always looking ways to improve my illustrations, and this class seemed like a great opportunity to systematically approach the topic. I'm particularly interested in high dimension datasets and I love graph-theory visualizations.
         </span>
     </div>
@@ -48,7 +48,7 @@ const flippedProfileContent = <div style="transform: scaleX(-1);">
         This website was not created by a website-builder, a template, or a copy-paste codebase.
         <Spacer />
         <Spacer />
-        Everything was hand coded, from the angle of the shooting stars in the background to the length of the elements' shadows. This site does not even a JavaScript framework like React, Vue, or Angular. The images in the background are all SVG's ready to be animated into action. Anime.js is the only major runtime library. Quik Stack (which uses Parcel.js and Express.js) was used for debugging/compiling the code.
+        Everything was hand coded, from the angle of the shooting stars in the background to the color pallet of the cards. This site does not even a JavaScript framework like React, Vue, or Angular. The images in the background are all SVG's ready to be animated into action. Anime.js is the only major runtime library. Quik Stack (which uses Parcel.js and Express.js) was used for debugging/compiling the code.
     </div>
 </div>
 
@@ -145,7 +145,7 @@ document.body = <body>
                 />
             
             <ContentCard
-                title="Projects: Better C++ Syntax"
+                title="Project: Better C++ Syntax"
                 titleColor="var(--blue)"
                 content={<span>
                     As a programmer that likes design, natually I want my code to look good.
@@ -153,7 +153,23 @@ document.body = <body>
                     Right out of the box C++ is pretty ugly and confusing, but it is even worse without syntax highlighting. The highlighting in VS Code was pretty bad though, so I wrote <a href="https://github.com/jeff-hykin/better-cpp-syntax">a library</a> and fixed it.
                     <Spacer/>
                     
-                    <img style="object-fit: cover; width: 100%; max-width: 70rem;" src="https://user-images.githubusercontent.com/17692058/132951075-2159af24-5f6a-47cc-9655-923830a30eb0.png" alt="" srcset="" />
+                    <img style="min-height: 479px; object-fit: cover; width: 100%; max-width: 70rem;" src="https://user-images.githubusercontent.com/17692058/132951075-2159af24-5f6a-47cc-9655-923830a30eb0.png" alt="" srcset="" />
+                    
+                </span>}
+                />
+            
+            <ContentCard
+                title="Project: Silver Spectacle"
+                titleColor="var(--blue)"
+                content={<span>
+                    MatplotLib is the go-to library for graphs and charts in Python. And the default design it has is absolutely hideous, both the code and the resulting graph.
+                    <Spacer/>
+                    I wanted something easy, beautiful, and customizable. Something that could leverage the power of tools like D3.js, and plotly. So I created a visualization library for Python called <a href="https://github.com/jeff-hykin/silver_spectacle">Silver Spectacle</a> that seemlessly takes advantage of the Web's powerful UI tools.
+                    <Spacer/>
+                    Here's part of the readme.md looks like:
+                    <Spacer/>
+                    <img style="object-fit: cover; width: 100%; max-width: 70rem;" src="https://user-images.githubusercontent.com/17692058/132971482-cb32f8ab-9f6c-4756-9587-13802a41dd2e.png" alt="" srcset="" />
+                    <img style="object-fit: cover; width: 100%; max-width: 70rem;" src="https://user-images.githubusercontent.com/17692058/132971514-e940b90a-18d5-4811-837a-fc759e459671.png" alt="" srcset="" />
                     
                 </span>}
                 />
