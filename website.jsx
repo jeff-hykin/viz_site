@@ -48,7 +48,7 @@ const flippedProfileContent = <div style="transform: scaleX(-1);">
         This website was not created by a website-builder, a template, or a copy-paste codebase. It does not even use a JavaScript framework like React, Vue, or Angular.
         <Spacer />
         <Spacer />
-        Everything from the angle of the shooting stars in the background to the length elements' shadows are hand-coded. The images in the background are all SVG's ready to be animated into action. Anime.js is the only major runtime library. Quik Stack (which uses Parcel.js and Express.js) was used for debugging/compiling the code.
+        Everything from the angle of the shooting stars in the background to the length of the elements' shadows are hand-coded. The images in the background are all SVG's ready to be animated into action. Anime.js is the only major runtime library. Quik Stack (which uses Parcel.js and Express.js) was used for debugging/compiling the code.
     </div>
 </div>
 
