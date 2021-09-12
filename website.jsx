@@ -166,7 +166,7 @@ document.body = <body>
                     <Spacer/>
                     I wanted something easy, beautiful, and customizable. Something that could leverage the power of tools like D3.js, and plotly. So I created a visualization library for Python called <a href="https://github.com/jeff-hykin/silver_spectacle">Silver Spectacle</a> that seemlessly takes advantage of the Web's powerful UI tools.
                     <Spacer/>
-                    Here's part of the readme.md looks like:
+                    Here's part of the readme.md:
                     <Spacer/>
                     <img style="object-fit: cover; width: 100%; max-width: 70rem;" src="https://user-images.githubusercontent.com/17692058/132971482-cb32f8ab-9f6c-4756-9587-13802a41dd2e.png" alt="" srcset="" />
                     <img style="object-fit: cover; width: 100%; max-width: 70rem;" src="https://user-images.githubusercontent.com/17692058/132971514-e940b90a-18d5-4811-837a-fc759e459671.png" alt="" srcset="" />
