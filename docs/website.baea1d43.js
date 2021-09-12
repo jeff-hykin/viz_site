@@ -2915,15 +2915,17 @@ var flippedProfileContent = /*#__PURE__*/React.createElement("div", {
     color: "var(--charcoal)",
     lineHeight: "22pt"
   }
-}, "This website was not created by a website-builder, a template, or a copy-paste codebase. It does not even use a JavaScript framework like React, Vue, or Angular.", /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement(Spacer, null), "Everything from the angle of the shooting stars in the background to the distance of the card's shadows is hand-coded. The images in the background are all SVG's ready to be animated into action. Anime.js is the only major runtime library. Quik Stack (which uses Parcel.js and Express.js) was used for debugging/compiling the code."));
-var profileCard;
+}, "This website was not created by a website-builder, a template, or a copy-paste codebase. It does not even use a JavaScript framework like React, Vue, or Angular.", /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement(Spacer, null), "Everything from the angle of the shooting stars in the background to the length elements' shadows are hand-coded. The images in the background are all SVG's ready to be animated into action. Anime.js is the only major runtime library. Quik Stack (which uses Parcel.js and Express.js) was used for debugging/compiling the code."));
+var profileCard, floatingLandscape, contentCards;
 document.body = /*#__PURE__*/React.createElement("body", null, /*#__PURE__*/React.createElement("style", null, "\n        h3 {\n            font-size: 27pt;\n        }\n    "), /*#__PURE__*/React.createElement("div", {
   style: "width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; z-index: -1; background: whitesmoke;"
-}, starContainer), /*#__PURE__*/React.createElement("div", {
+}, starContainer), floatingLandscape = /*#__PURE__*/React.createElement("div", {
   style: {
     position: "fixed",
     top: "0",
-    left: "600px"
+    left: "600px",
+    opacity: 0,
+    transition: "all 0.3s ease-in-out 0s"
   }
 }, campsite, /*#__PURE__*/React.createElement("div", {
   style: {
@@ -2936,95 +2938,184 @@ document.body = /*#__PURE__*/React.createElement("body", null, /*#__PURE__*/Reac
   id: "profile"
 }, /*#__PURE__*/React.createElement("style", null, "\n            #profile {\n                position: fixed;\n                left: 5rem;\n                top: 6rem;\n                width: 500px;\n                overflow: visible;\n            }\n        "), profileCard = /*#__PURE__*/React.createElement(Card, {
   style: "\n                min-height: 50rem;\n            ",
-  onclick: function onclick(eventObj) {
-    console.log("clicked");
+  onmouseenter: function onmouseenter(eventObj) {
+    console.log("mouseenter");
+    profileCard.hasMouse = true;
+    console.log("profileCard.hasMouse is:", profileCard.hasMouse);
+    checkCardFlip(eventObj);
+  },
+  onmouseleave: function onmouseleave(eventObj) {
+    console.log("mouseleave");
+    profileCard.hasMouse = false;
+    checkCardFlip(eventObj);
+  }
+}, normalProfileContent), contentCards = /*#__PURE__*/React.createElement("div", {
+  style: _objectSpread(_objectSpread({
+    position: "fixed",
+    left: "680px",
+    top: "0"
+  }, columnObj), {}, {
+    alignItems: "flex-start",
+    justifyContent: "flex-start",
+    overflow: "scroll",
+    maxHeight: "100vh",
+    scrollbarWidth: "none",
+    padding: "1rem",
+    transition: "all 0.3s ease-in-out 0s"
+  })
+}, /*#__PURE__*/React.createElement(Spacer, {
+  size: "4.5rem"
+}), /*#__PURE__*/React.createElement(ContentCard, {
+  title: "Great Visualizations",
+  titleColor: "var(--green)",
+  content: /*#__PURE__*/React.createElement("span", null, "While there's many I like, I'd have to say my favorite is a tool called ", /*#__PURE__*/React.createElement("a", {
+    href: "https://github.com/FredrikNoren/ungit"
+  }, "Ungit"), /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("div", {
+    style: _objectSpread(_objectSpread({}, rowObj), {}, {
+      minHeight: "210px"
+    })
+  }, /*#__PURE__*/React.createElement("img", {
+    style: "width: 30%;",
+    src: "https://user-images.githubusercontent.com/17692058/132936366-0b92c052-b350-420e-be97-b9532d0d7d98.png",
+    alt: "",
+    srcset: ""
+  }), /*#__PURE__*/React.createElement("img", {
+    style: "object-fit: cover; width: 70%",
+    src: "https://user-images.githubusercontent.com/17692058/132936393-ce33424c-6410-4d22-8a4f-8bca703db9a7.png",
+    alt: "",
+    srcset: ""
+  })), /*#__PURE__*/React.createElement(Spacer, null), "What makes it so great is that it allows for infinite 2D panning and highly interactive exploration of ", /*#__PURE__*/React.createElement("code", null, "git"), ". Git has this elegant graph based model of code, but without a tool like ungit it is completely stuck in your head, hidden behind the text in the terminal. ", /*#__PURE__*/React.createElement("br", null))
+}), /*#__PURE__*/React.createElement(ContentCard, {
+  title: "Terrible Visualizations",
+  titleColor: "var(--red)",
+  content: /*#__PURE__*/React.createElement("span", null, "Similarly, while there are many I find horrifying, there is one that immediately comes to mind. Allow me to introduce my bank, Wells Fargo.", /*#__PURE__*/React.createElement(Spacer, null), "Sometimes the worst visualization is simply no visualization:", /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("img", {
+    style: "object-fit: cover; width: 100%; max-width: 70rem;height: 482.5px;",
+    src: "https://user-images.githubusercontent.com/17692058/132937010-11dd9cb7-0b7a-4041-9dde-c4efa464da53.png",
+    alt: "",
+    srcset: ""
+  }), /*#__PURE__*/React.createElement(Spacer, null), "Whats income? Whats an expense? Are their any trends? Any clusters? We can't tell.", /*#__PURE__*/React.createElement(Spacer, null), "Make no mistake, this is a GUI application, not a file or a PDF or a terminal window. The data is being graphically displayed. Not only is there no average, no future projections, no indication of up/downward trends, but there is not so much as a 1% change in hue between a 1\xA2 charge and a $6,000 charge. There isn't even a color distinction between cashflow out and cashflow in. ", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement(Spacer, null), "This format conveys the absolute rock-bottom minimum amount of insight. No format could provide less understanding without quite literally obfuscating the data itself.")
+}), /*#__PURE__*/React.createElement(ContentCard, {
+  title: "Projects: Better C++ Syntax",
+  titleColor: "var(--blue)",
+  content: /*#__PURE__*/React.createElement("span", null, "As a programmer that likes design, natually I want my code to look good.", /*#__PURE__*/React.createElement(Spacer, null), "Right out of the box C++ is pretty ugly and confusing, but it is even worse without syntax highlighting. The highlighting in VS Code was pretty bad though, so I wrote ", /*#__PURE__*/React.createElement("a", {
+    href: "https://github.com/jeff-hykin/better-cpp-syntax"
+  }, "a library"), " and fixed it.", /*#__PURE__*/React.createElement(Spacer, null), /*#__PURE__*/React.createElement("img", {
+    style: "object-fit: cover; width: 100%; max-width: 70rem;",
+    src: "https://user-images.githubusercontent.com/17692058/132951075-2159af24-5f6a-47cc-9655-923830a30eb0.png",
+    alt: "",
+    srcset: ""
+  }))
+}), /*#__PURE__*/React.createElement(Spacer, {
+  size: "6.5rem"
+}))));
 
-    if (profileCard.isFlipping) {
-      return;
+var flipAnimation = function flipAnimation() {
+  profileCard.isFlipping = true;
+  anime({
+    targets: profileCard,
+    // opacity: [{value:1}, {value:0},{value:1, delay: 450} ],
+    scale: [{
+      value: 1
+    }, {
+      value: 1.05
+    }, {
+      value: 1,
+      delay: 250
+    }],
+    rotateY: {
+      value: "+=180",
+      delay: 200
+    },
+    easing: "easeInOutSine",
+    duration: 400,
+    complete: function complete(anim) {
+      profileCard.isFlipping = false;
+
+      if (profileCard.hasMouse) {
+        profileCard.children = [flippedProfileContent];
+      } else {
+        profileCard.children = [normalProfileContent];
+      }
     }
+  });
+};
 
-    profileCard.wasFlipped = !profileCard.wasFlipped;
-    profileCard.isFlipping = true;
+function checkCardFlip(eventObj) {
+  // debounce
+  if (profileCard.isFlipping) {
+    return;
+  }
 
-    if (profileCard.wasFlipped) {
-      anime({
-        targets: flippedProfileContent,
-        opacity: [{
-          value: 0
-        }, {
-          value: 0
-        }, {
-          value: 1,
-          delay: 450
-        }],
-        easing: "easeInOutSine",
-        duration: 400
-      });
-      anime({
-        targets: normalProfileContent,
-        opacity: [{
-          value: 1
-        }, {
-          value: 0
-        }],
-        easing: "easeInOutSine",
-        duration: 400
-      });
-    } else {
-      anime({
-        targets: normalProfileContent,
-        opacity: [{
-          value: 0
-        }, {
-          value: 0
-        }, {
-          value: 1,
-          delay: 450
-        }],
-        easing: "easeInOutSine",
-        duration: 400
-      });
-      anime({
-        targets: flippedProfileContent,
-        opacity: [{
-          value: 1
-        }, {
-          value: 0
-        }],
-        easing: "easeInOutSine",
-        duration: 400
-      });
-    }
+  console.log("profileCard.hasMouse is:", profileCard.hasMouse);
+  console.log("!checkCardFlip.isFlipped is:", !checkCardFlip.isFlipped);
+
+  if (profileCard.hasMouse && !checkCardFlip.isFlipped) {
+    checkCardFlip.isFlipped = true; // fade in
 
     anime({
-      targets: profileCard,
-      // opacity: [{value:1}, {value:0},{value:1, delay: 450} ],
-      scale: [{
-        value: 1
+      targets: flippedProfileContent,
+      opacity: [{
+        value: 0
       }, {
-        value: 1.05
+        value: 0
       }, {
         value: 1,
-        delay: 250
+        delay: 450
       }],
-      rotateY: {
-        value: "+=180",
-        delay: 200
-      },
       easing: "easeInOutSine",
-      duration: 400,
-      complete: function complete(anim) {
-        profileCard.isFlipping = false;
+      duration: 400
+    }); // fade out
 
-        if (profileCard.wasFlipped) {
-          profileCard.children = [flippedProfileContent];
-        } else {
-          profileCard.children = [normalProfileContent];
-        }
-      }
+    anime({
+      targets: normalProfileContent,
+      opacity: [{
+        value: 1
+      }, {
+        value: 0
+      }],
+      easing: "easeInOutSine",
+      duration: 400
+    }); // fade in
+
+    floatingLandscape.style.opacity = 1; // fade out
+
+    contentCards.style.opacity = 0; // start the flip animation
+
+    flipAnimation();
+  } else if (!profileCard.hasMouse && !!checkCardFlip.isFlipped) {
+    checkCardFlip.isFlipped = false;
+    anime({
+      targets: normalProfileContent,
+      opacity: [{
+        value: 0
+      }, {
+        value: 0
+      }, {
+        value: 1,
+        delay: 450
+      }],
+      easing: "easeInOutSine",
+      duration: 400
     });
+    anime({
+      targets: flippedProfileContent,
+      opacity: [{
+        value: 1
+      }, {
+        value: 0
+      }],
+      easing: "easeInOutSine",
+      duration: 400
+    }); // fade in
+
+    floatingLandscape.style.opacity = 0; // fade out
+
+    contentCards.style.opacity = 1;
+    flipAnimation();
   }
-}, normalProfileContent)));
+}
+
+setInterval(checkCardFlip, 400);
 document.body.style = "\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100vw;\n    min-height: 100vh;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: flex-start;\n    font-size: 30pt; \n    font-family: sans-serif;\n";
 },{"./main/globals.sass":"../main/globals.sass","css-baseline/css/2":"../node_modules/css-baseline/css/2.css","animejs":"../node_modules/animejs/lib/anime.es.js","./main/stars":"../main/stars.jsx","./main/campfire":"../main/campfire.jsx","./main/card":"../main/card.jsx","./main/spacer":"../main/spacer.jsx","./main/howdy":"../main/howdy.jsx","./main/campsite":"../main/campsite.jsx","./main/styles":"../main/styles.js"}],"../node_modules/.pnpm/parcel-bundler@1.12.5/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];

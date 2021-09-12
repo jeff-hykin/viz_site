@@ -48,11 +48,11 @@ const flippedProfileContent = <div style="transform: scaleX(-1);">
         This website was not created by a website-builder, a template, or a copy-paste codebase. It does not even use a JavaScript framework like React, Vue, or Angular.
         <Spacer />
         <Spacer />
-        Everything from the angle of the shooting stars in the background to the distance of the card's shadows is hand-coded. The images in the background are all SVG's ready to be animated into action. Anime.js is the only major runtime library. Quik Stack (which uses Parcel.js and Express.js) was used for debugging/compiling the code.
+        Everything from the angle of the shooting stars in the background to the length elements' shadows are hand-coded. The images in the background are all SVG's ready to be animated into action. Anime.js is the only major runtime library. Quik Stack (which uses Parcel.js and Express.js) was used for debugging/compiling the code.
     </div>
 </div>
 
-let profileCard
+let profileCard, floatingLandscape, contentCards
 document.body = <body>
     <style>{`
         h3 {
@@ -63,12 +63,12 @@ document.body = <body>
     <div style={`width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; z-index: -1; background: whitesmoke;`}>
         {starContainer}
     </div>
-    <div style={{position:"fixed", top:"0",left:"600px"}}>
+    {floatingLandscape = <div style={{position:"fixed", top:"0",left:"600px", opacity: 0, transition: "all 0.3s ease-in-out 0s"}}>
         {campsite}
         <div style={{position: "absolute",top: "34.3rem", left: "18.5rem", transform: "scale(0.35)",}}>
             {campfire}
         </div>
-    </div>
+    </div>}
     
     {/*         */}
     {/* Profile */}
@@ -88,117 +88,76 @@ document.body = <body>
             style={`
                 min-height: 50rem;
             `}
-            onclick={eventObj=>{
-                console.log(`clicked`)
-                if (profileCard.isFlipping) {return}
-                profileCard.wasFlipped = !profileCard.wasFlipped
-                profileCard.isFlipping = true
-                if (profileCard.wasFlipped) {
-                    anime({
-                        targets: flippedProfileContent,
-                        opacity: [{value:0}, {value:0},{value:1, delay: 450} ],
-                        easing: "easeInOutSine",
-                        duration: 400,
-                    })
-                    anime({
-                        targets: normalProfileContent,
-                        opacity: [{value:1}, {value:0,} ],
-                        easing: "easeInOutSine",
-                        duration: 400,
-                    })
-                } else {
-                    anime({
-                        targets: normalProfileContent,
-                        opacity: [{value:0}, {value:0},{value:1, delay: 450} ],
-                        easing: "easeInOutSine",
-                        duration: 400,
-                    })
-                    anime({
-                        targets: flippedProfileContent,
-                        opacity: [{value:1}, {value:0,} ],
-                        easing: "easeInOutSine",
-                        duration: 400,
-                    })
-                }
-                anime({
-                    targets: profileCard,
-                    // opacity: [{value:1}, {value:0},{value:1, delay: 450} ],
-                    scale: [{value:1}, {value:1.05},{value:1, delay: 250} ],
-                    rotateY: {value: "+=180", delay: 200},
-                    easing: "easeInOutSine",
-                    duration: 400,
-                    complete: function(anim) {
-                        profileCard.isFlipping = false
-                        if (profileCard.wasFlipped) {
-                            profileCard.children = [flippedProfileContent]
-                        } else {
-                            profileCard.children = [normalProfileContent]
-                        }
-                    }
-                })
+            onmouseenter={(eventObj)=>{
+                console.log(`mouseenter`)
+                profileCard.hasMouse = true
+                console.log(`profileCard.hasMouse is:`,profileCard.hasMouse)
+                checkCardFlip(eventObj)
+            }}
+            onmouseleave={(eventObj)=>{
+                console.log(`mouseleave`)
+                profileCard.hasMouse=false; checkCardFlip(eventObj)
             }}
             >
             {normalProfileContent}
         </Card>}
         
-        {
-            // {/*       */}
-            // {/* Cards */}
-            // {/*       */}
-            // <div style={{position: "fixed", left: "680px", top: "0", ...columnObj, alignItems: "flex-start", justifyContent: "flex-start", overflow: "scroll", maxHeight: "100vh", scrollbarWidth: "none", padding: "1rem"}}>
-            //     <Spacer size="4.5rem"></Spacer>
-            //     <ContentCard
-            //         title="Great Visualizations"
-            //         titleColor="var(--green)"
-            //         content={<span>
-            //             While there's many I like, I'd have to say my favorite is a tool called <a href="https://github.com/FredrikNoren/ungit">Ungit</a>
-            //             <Spacer/>
-            //             <div style={{...rowObj, minHeight: "210px"}}>
-            //                 <img style="width: 30%;" src="https://user-images.githubusercontent.com/17692058/132936366-0b92c052-b350-420e-be97-b9532d0d7d98.png" alt="" srcset="" />
-            //                 <img style="object-fit: cover; width: 70%" src="https://user-images.githubusercontent.com/17692058/132936393-ce33424c-6410-4d22-8a4f-8bca703db9a7.png" alt="" srcset="" />
-            //             </div>
-            //             <Spacer/>
-            //             What makes it so great is that it allows for infinite 2D panning and highly interactive exploration of <code>git</code>. Git has this elegant graph based model of code, but without a tool like ungit it is completely stuck in your head, hidden behind the text in the terminal. <br/>
-            //         </span>}
-            //         />
-            //     <ContentCard
-            //         title="Terrible Visualizations"
-            //         titleColor="var(--red)"
-            //         content={<span>
-            //             Similarly, while there are many I find horrifying, there is one that immediately comes to mind. Allow me to introduce my bank, Wells Fargo.
-            //             <Spacer/>
-            //             Sometimes the worst visualization is simply no visualization:
-            //             <Spacer/>
-            //             <img style="object-fit: cover; width: 100%; max-width: 70rem;height: 482.5px;" src="https://user-images.githubusercontent.com/17692058/132937010-11dd9cb7-0b7a-4041-9dde-c4efa464da53.png" alt="" srcset="" />
-            //             {/* <div style={{...rowObj}}>
-            //             </div> */}
-            //                 {/* <img style="width: 30%" src="https://user-images.githubusercontent.com/17692058/132936366-0b92c052-b350-420e-be97-b9532d0d7d98.png" alt="" srcset="" /> */}
-            //             <Spacer/>
-            //             Whats income? Whats an expense? Are their any trends? Any clusters? We can't tell.
-            //             <Spacer />
-            //             Make no mistake, this is a GUI application, not a file or a PDF or a terminal window. The data is being graphically displayed. Not only is there no average, no future projections, no indication of up/downward trends, but there is not so much as a 1% change in hue between a 1¢ charge and a $6,000 charge. There isn't even a color distinction between cashflow out and cashflow in. <br/>
-            //             <Spacer />
-            //             This format conveys the absolute rock-bottom minimum amount of insight. No format could provide less understanding without quite literally obfuscating the data itself.
-            //         </span>}
-            //         />
-                
-            //     <ContentCard
-            //         title="Projects: Better C++ Syntax"
-            //         titleColor="var(--blue)"
-            //         content={<span>
-            //             As a programmer that likes design, natually I want my code to look good.
-            //             <Spacer/>
-            //             Right out of the box C++ is pretty ugly and confusing, but it is even worse without syntax highlighting. The highlighting in VS Code was pretty bad though, so I wrote <a href="https://github.com/jeff-hykin/better-cpp-syntax">a library</a> and fixed it.
-            //             <Spacer/>
-                        
-            //             <img style="object-fit: cover; width: 100%; max-width: 70rem;" src="https://user-images.githubusercontent.com/17692058/132951075-2159af24-5f6a-47cc-9655-923830a30eb0.png" alt="" srcset="" />
-                        
-            //         </span>}
-            //         />
-                
-            //     <Spacer size="6.5rem"></Spacer>
-            // </div>
-        }
+        {/*       */}
+        {/* Cards */}
+        {/*       */}
+        {contentCards = <div style={{position: "fixed", left: "680px", top: "0", ...columnObj, alignItems: "flex-start", justifyContent: "flex-start", overflow: "scroll", maxHeight: "100vh", scrollbarWidth: "none", padding: "1rem", transition: "all 0.3s ease-in-out 0s"}}>
+            <Spacer size="4.5rem"></Spacer>
+            <ContentCard
+                title="Great Visualizations"
+                titleColor="var(--green)"
+                content={<span>
+                    While there's many I like, I'd have to say my favorite is a tool called <a href="https://github.com/FredrikNoren/ungit">Ungit</a>
+                    <Spacer/>
+                    <div style={{...rowObj, minHeight: "210px"}}>
+                        <img style="width: 30%;" src="https://user-images.githubusercontent.com/17692058/132936366-0b92c052-b350-420e-be97-b9532d0d7d98.png" alt="" srcset="" />
+                        <img style="object-fit: cover; width: 70%" src="https://user-images.githubusercontent.com/17692058/132936393-ce33424c-6410-4d22-8a4f-8bca703db9a7.png" alt="" srcset="" />
+                    </div>
+                    <Spacer/>
+                    What makes it so great is that it allows for infinite 2D panning and highly interactive exploration of <code>git</code>. Git has this elegant graph based model of code, but without a tool like ungit it is completely stuck in your head, hidden behind the text in the terminal. <br/>
+                </span>}
+                />
+            <ContentCard
+                title="Terrible Visualizations"
+                titleColor="var(--red)"
+                content={<span>
+                    Similarly, while there are many I find horrifying, there is one that immediately comes to mind. Allow me to introduce my bank, Wells Fargo.
+                    <Spacer/>
+                    Sometimes the worst visualization is simply no visualization:
+                    <Spacer/>
+                    <img style="object-fit: cover; width: 100%; max-width: 70rem;height: 482.5px;" src="https://user-images.githubusercontent.com/17692058/132937010-11dd9cb7-0b7a-4041-9dde-c4efa464da53.png" alt="" srcset="" />
+                    {/* <div style={{...rowObj}}>
+                    </div> */}
+                        {/* <img style="width: 30%" src="https://user-images.githubusercontent.com/17692058/132936366-0b92c052-b350-420e-be97-b9532d0d7d98.png" alt="" srcset="" /> */}
+                    <Spacer/>
+                    Whats income? Whats an expense? Are their any trends? Any clusters? We can't tell.
+                    <Spacer />
+                    Make no mistake, this is a GUI application, not a file or a PDF or a terminal window. The data is being graphically displayed. Not only is there no average, no future projections, no indication of up/downward trends, but there is not so much as a 1% change in hue between a 1¢ charge and a $6,000 charge. There isn't even a color distinction between cashflow out and cashflow in. <br/>
+                    <Spacer />
+                    This format conveys the absolute rock-bottom minimum amount of insight. No format could provide less understanding without quite literally obfuscating the data itself.
+                </span>}
+                />
+            
+            <ContentCard
+                title="Projects: Better C++ Syntax"
+                titleColor="var(--blue)"
+                content={<span>
+                    As a programmer that likes design, natually I want my code to look good.
+                    <Spacer/>
+                    Right out of the box C++ is pretty ugly and confusing, but it is even worse without syntax highlighting. The highlighting in VS Code was pretty bad though, so I wrote <a href="https://github.com/jeff-hykin/better-cpp-syntax">a library</a> and fixed it.
+                    <Spacer/>
+                    
+                    <img style="object-fit: cover; width: 100%; max-width: 70rem;" src="https://user-images.githubusercontent.com/17692058/132951075-2159af24-5f6a-47cc-9655-923830a30eb0.png" alt="" srcset="" />
+                    
+                </span>}
+                />
+            
+            <Spacer size="6.5rem"></Spacer>
+        </div>}
         
         
     </div>
@@ -209,6 +168,75 @@ document.body = <body>
     </div> */}
     
 </body>
+
+const flipAnimation = ()=>{
+    profileCard.isFlipping = true
+    anime({
+        targets: profileCard,
+        // opacity: [{value:1}, {value:0},{value:1, delay: 450} ],
+        scale: [{value:1}, {value:1.05},{value:1, delay: 250} ],
+        rotateY: {value: "+=180", delay: 200},
+        easing: "easeInOutSine",
+        duration: 400,
+        complete: function(anim) {
+            profileCard.isFlipping = false
+            if (profileCard.hasMouse) {
+                profileCard.children = [flippedProfileContent]
+            } else {
+                profileCard.children = [normalProfileContent]
+            }
+        }
+    })
+}
+function checkCardFlip(eventObj) {
+    // debounce
+    if (profileCard.isFlipping) {return}
+    console.log(`profileCard.hasMouse is:`,profileCard.hasMouse)
+    console.log(`!checkCardFlip.isFlipped is:`,!checkCardFlip.isFlipped)
+    if (profileCard.hasMouse && !checkCardFlip.isFlipped) {
+        checkCardFlip.isFlipped = true
+        // fade in
+        anime({
+            targets: flippedProfileContent,
+            opacity: [{value:0}, {value:0},{value:1, delay: 450} ],
+            easing: "easeInOutSine",
+            duration: 400,
+        })
+        // fade out
+        anime({
+            targets: normalProfileContent,
+            opacity: [{value:1}, {value:0,} ],
+            easing: "easeInOutSine",
+            duration: 400,
+        })
+        // fade in
+        floatingLandscape.style.opacity = 1
+        // fade out
+        contentCards.style.opacity = 0
+        // start the flip animation
+        flipAnimation()
+    } else if (!profileCard.hasMouse && !!checkCardFlip.isFlipped) {
+        checkCardFlip.isFlipped = false
+        anime({
+            targets: normalProfileContent,
+            opacity: [{value:0}, {value:0},{value:1, delay: 450} ],
+            easing: "easeInOutSine",
+            duration: 400,
+        })
+        anime({
+            targets: flippedProfileContent,
+            opacity: [{value:1}, {value:0,} ],
+            easing: "easeInOutSine",
+            duration: 400,
+        })
+        // fade in
+        floatingLandscape.style.opacity = 0
+        // fade out
+        contentCards.style.opacity = 1
+        flipAnimation()
+    }
+}
+setInterval(checkCardFlip, 400)
 
 document.body.style = `
     position: fixed;
